@@ -1,0 +1,153 @@
+{
+  "name": "trend_filter",
+  "seed": 7,
+  "n_configs_tried": 60,
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "baseline": {
+    "train": {
+      "n_trades": 3268,
+      "wins": 1544,
+      "losses": 1724,
+      "win_rate": 0.4724602203182375,
+      "total_pnl": -92.58008730516352,
+      "total_return": -0.9258008730516352,
+      "avg_return_pct": -0.0002832928008113953,
+      "sharpe_like": -4.535828584847694,
+      "max_drawdown": -95.20887211099273,
+      "turnover": 653507.4199126959,
+      "exits_by_reason": {
+        "max_hold": 2436,
+        "stop_loss": 433,
+        "eod_flatten": 180,
+        "vwap_revert": 219
+      }
+    },
+    "val": {
+      "n_trades": 1161,
+      "wins": 554,
+      "losses": 607,
+      "win_rate": 0.4771748492678725,
+      "total_pnl": -14.918368004784115,
+      "total_return": -0.14918368004784116,
+      "avg_return_pct": -0.00012849584844775347,
+      "sharpe_like": -1.4163449564934465,
+      "max_drawdown": -22.725445080052708,
+      "turnover": 232185.08163199524,
+      "exits_by_reason": {
+        "stop_loss": 101,
+        "vwap_revert": 83,
+        "max_hold": 918,
+        "eod_flatten": 59
+      }
+    },
+    "test": {
+      "n_trades": 1021,
+      "wins": 525,
+      "losses": 496,
+      "win_rate": 0.5142017629774731,
+      "total_pnl": 5.600080223938295,
+      "total_return": 0.056000802239382946,
+      "avg_return_pct": 5.4848973789797124e-05,
+      "sharpe_like": 0.46778366766097534,
+      "max_drawdown": -9.332455245975424,
+      "turnover": 204205.60008022378,
+      "exits_by_reason": {
+        "vwap_revert": 83,
+        "max_hold": 775,
+        "stop_loss": 117,
+        "eod_flatten": 46
+      }
+    }
+  },
+  "best_params": {
+    "entry_dist": 0.01,
+    "vol_mult": 1.5,
+    "max_hold": 30,
+    "vwap_exit_band": 0.002,
+    "stop_loss": 0.005,
+    "rr_floor": -0.005,
+    "dist_cap": 0.013
+  },
+  "selected": {
+    "train": {
+      "n_trades": 538,
+      "wins": 231,
+      "losses": 307,
+      "win_rate": 0.42936802973977695,
+      "total_pnl": -36.67759487710918,
+      "total_return": -0.36677594877109176,
+      "avg_return_pct": -0.0006817396817306515,
+      "sharpe_like": -3.2896342161644894,
+      "max_drawdown": -45.83686968118493,
+      "turnover": 107563.32240512285,
+      "exits_by_reason": {
+        "max_hold": 293,
+        "vwap_revert": 39,
+        "stop_loss": 168,
+        "eod_flatten": 38
+      }
+    },
+    "val": {
+      "n_trades": 177,
+      "wins": 103,
+      "losses": 74,
+      "win_rate": 0.5819209039548022,
+      "total_pnl": 12.191610990660829,
+      "total_return": 0.12191610990660828,
+      "avg_return_pct": 0.0006887915813932684,
+      "sharpe_like": 2.181410267218561,
+      "max_drawdown": -3.5167440924243785,
+      "turnover": 35412.19161099065,
+      "exits_by_reason": {
+        "eod_flatten": 26,
+        "vwap_revert": 12,
+        "max_hold": 117,
+        "stop_loss": 22
+      }
+    },
+    "test": {
+      "n_trades": 137,
+      "wins": 78,
+      "losses": 59,
+      "win_rate": 0.5693430656934306,
+      "total_pnl": 11.559060707570067,
+      "total_return": 0.11559060707570067,
+      "avg_return_pct": 0.0008437270589467195,
+      "sharpe_like": 1.8377888086472385,
+      "max_drawdown": -4.213635177241567,
+      "turnover": 27411.559060707576,
+      "exits_by_reason": {
+        "max_hold": 80,
+        "eod_flatten": 8,
+        "stop_loss": 29,
+        "vwap_revert": 20
+      }
+    }
+  },
+  "survives_oos": true,
+  "robustness_caveat": {
+    "honest_verdict": "REJECT — regime artifact, NOT a trend-filter edge. The mechanical survives_oos=true is selection bias caught by the protocol.",
+    "configs_positive_on_train": 0,
+    "configs_positive_on_val": 9,
+    "note_train": "Selected config LOSES on train (-36.68, the 60% bulk of history); ALL 60 searched configs were negative on train. Wins appear only on the contiguous recent val+test regime (2026-02..2026-06).",
+    "trend_filter_not_the_source": "Same selected base params WITHOUT any trend filter make MORE on test (+20.77, sharpe +2.13) than WITH it (+11.56). The trend filter SUBTRACTS PnL; the recent regime, not the filter, produces the positive test number.",
+    "regime_effect": "Even the unfiltered DEFAULT baseline flips from train -92.58 to test +5.60. The whole strategy family is positive only in the recent regime.",
+    "train_test_gap": "Catastrophic sign flip: total_return train -0.367 -> test +0.116. Not a sane overfit gap."
+  }
+}

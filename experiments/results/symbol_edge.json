@@ -1,0 +1,462 @@
+{
+  "name": "symbol_edge",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "base_spec": {
+    "side": "long",
+    "entry_dist": 0.005,
+    "vol_mult": 1.2,
+    "max_hold": 15,
+    "vwap_exit_band": 0.001,
+    "stop_loss": 0.005,
+    "slippage_bps": 1.0
+  },
+  "per_symbol": {
+    "SPY": {
+      "train": {
+        "n_trades": 108,
+        "total_pnl": -2.9902,
+        "total_return": -0.029902,
+        "win_rate": 0.4537,
+        "sharpe": -1.2647,
+        "max_dd": -3.5958,
+        "avg_ret_bps": -2.7687
+      },
+      "val": {
+        "n_trades": 50,
+        "total_pnl": 0.721,
+        "total_return": 0.00721,
+        "win_rate": 0.5,
+        "sharpe": 0.6238,
+        "max_dd": -1.4258,
+        "avg_ret_bps": 1.442
+      },
+      "test": {
+        "n_trades": 6,
+        "total_pnl": 1.0572,
+        "total_return": 0.010572,
+        "win_rate": 0.8333,
+        "sharpe": 2.2183,
+        "max_dd": -0.5479,
+        "avg_ret_bps": 17.6199
+      }
+    },
+    "QQQ": {
+      "train": {
+        "n_trades": 220,
+        "total_pnl": -5.7676,
+        "total_return": -0.057676,
+        "win_rate": 0.4864,
+        "sharpe": -1.532,
+        "max_dd": -7.4167,
+        "avg_ret_bps": -2.6216
+      },
+      "val": {
+        "n_trades": 77,
+        "total_pnl": 0.1884,
+        "total_return": 0.001884,
+        "win_rate": 0.4545,
+        "sharpe": 0.1029,
+        "max_dd": -2.4873,
+        "avg_ret_bps": 0.2447
+      },
+      "test": {
+        "n_trades": 26,
+        "total_pnl": 1.9231,
+        "total_return": 0.019231,
+        "win_rate": 0.6923,
+        "sharpe": 1.5028,
+        "max_dd": -0.9224,
+        "avg_ret_bps": 7.3965
+      }
+    },
+    "IWM": {
+      "train": {
+        "n_trades": 251,
+        "total_pnl": -11.8708,
+        "total_return": -0.118708,
+        "win_rate": 0.4462,
+        "sharpe": -2.6944,
+        "max_dd": -13.4361,
+        "avg_ret_bps": -4.7294
+      },
+      "val": {
+        "n_trades": 113,
+        "total_pnl": -0.3289,
+        "total_return": -0.003289,
+        "win_rate": 0.4867,
+        "sharpe": -0.1305,
+        "max_dd": -2.9676,
+        "avg_ret_bps": -0.291
+      },
+      "test": {
+        "n_trades": 54,
+        "total_pnl": 0.2909,
+        "total_return": 0.002909,
+        "win_rate": 0.4815,
+        "sharpe": 0.166,
+        "max_dd": -1.5298,
+        "avg_ret_bps": 0.5387
+      }
+    },
+    "AAPL": {
+      "train": {
+        "n_trades": 274,
+        "total_pnl": -4.4867,
+        "total_return": -0.044867,
+        "win_rate": 0.4818,
+        "sharpe": -1.0819,
+        "max_dd": -6.387,
+        "avg_ret_bps": -1.6375
+      },
+      "val": {
+        "n_trades": 109,
+        "total_pnl": -1.6829,
+        "total_return": -0.016829,
+        "win_rate": 0.4771,
+        "sharpe": -0.6624,
+        "max_dd": -3.5593,
+        "avg_ret_bps": -1.544
+      },
+      "test": {
+        "n_trades": 84,
+        "total_pnl": -1.8883,
+        "total_return": -0.018883,
+        "win_rate": 0.4762,
+        "sharpe": -0.9886,
+        "max_dd": -3.3805,
+        "avg_ret_bps": -2.248
+      }
+    },
+    "MSFT": {
+      "train": {
+        "n_trades": 303,
+        "total_pnl": -5.4529,
+        "total_return": -0.054529,
+        "win_rate": 0.4785,
+        "sharpe": -1.2153,
+        "max_dd": -7.8343,
+        "avg_ret_bps": -1.7996
+      },
+      "val": {
+        "n_trades": 141,
+        "total_pnl": -0.582,
+        "total_return": -0.00582,
+        "win_rate": 0.5461,
+        "sharpe": -0.2294,
+        "max_dd": -2.2293,
+        "avg_ret_bps": -0.4127
+      },
+      "test": {
+        "n_trades": 120,
+        "total_pnl": 1.3851,
+        "total_return": 0.013851,
+        "win_rate": 0.5,
+        "sharpe": 0.4675,
+        "max_dd": -2.3227,
+        "avg_ret_bps": 1.1542
+      }
+    },
+    "NVDA": {
+      "train": {
+        "n_trades": 543,
+        "total_pnl": -17.6783,
+        "total_return": -0.176783,
+        "win_rate": 0.4604,
+        "sharpe": -2.0518,
+        "max_dd": -21.2667,
+        "avg_ret_bps": -3.2557
+      },
+      "val": {
+        "n_trades": 166,
+        "total_pnl": -7.8892,
+        "total_return": -0.078892,
+        "win_rate": 0.4217,
+        "sharpe": -1.9356,
+        "max_dd": -10.5819,
+        "avg_ret_bps": -4.7525
+      },
+      "test": {
+        "n_trades": 184,
+        "total_pnl": -5.1084,
+        "total_return": -0.051084,
+        "win_rate": 0.4891,
+        "sharpe": -1.0524,
+        "max_dd": -6.9256,
+        "avg_ret_bps": -2.7763
+      }
+    },
+    "AMD": {
+      "train": {
+        "n_trades": 764,
+        "total_pnl": -35.9744,
+        "total_return": -0.359744,
+        "win_rate": 0.4437,
+        "sharpe": -2.7445,
+        "max_dd": -36.5389,
+        "avg_ret_bps": -4.7087
+      },
+      "val": {
+        "n_trades": 232,
+        "total_pnl": -1.7398,
+        "total_return": -0.017398,
+        "win_rate": 0.4784,
+        "sharpe": -0.2668,
+        "max_dd": -9.0802,
+        "avg_ret_bps": -0.7499
+      },
+      "test": {
+        "n_trades": 193,
+        "total_pnl": 6.4978,
+        "total_return": 0.064978,
+        "win_rate": 0.5337,
+        "sharpe": 0.7603,
+        "max_dd": -9.1473,
+        "avg_ret_bps": 3.3667
+      }
+    },
+    "TSLA": {
+      "train": {
+        "n_trades": 667,
+        "total_pnl": -22.7565,
+        "total_return": -0.227565,
+        "win_rate": 0.4813,
+        "sharpe": -2.1107,
+        "max_dd": -26.064,
+        "avg_ret_bps": -3.4118
+      },
+      "val": {
+        "n_trades": 255,
+        "total_pnl": -3.3707,
+        "total_return": -0.033707,
+        "win_rate": 0.4863,
+        "sharpe": -0.6218,
+        "max_dd": -6.9163,
+        "avg_ret_bps": -1.3219
+      },
+      "test": {
+        "n_trades": 188,
+        "total_pnl": 7.7964,
+        "total_return": 0.077964,
+        "win_rate": 0.5745,
+        "sharpe": 1.5072,
+        "max_dd": -2.8954,
+        "avg_ret_bps": 4.147
+      }
+    },
+    "META": {
+      "train": {
+        "n_trades": 380,
+        "total_pnl": -0.5036,
+        "total_return": -0.005036,
+        "win_rate": 0.4974,
+        "sharpe": -0.0812,
+        "max_dd": -5.0097,
+        "avg_ret_bps": -0.1325
+      },
+      "val": {
+        "n_trades": 188,
+        "total_pnl": -3.7301,
+        "total_return": -0.037301,
+        "win_rate": 0.4628,
+        "sharpe": -0.9609,
+        "max_dd": -8.3855,
+        "avg_ret_bps": -1.9841
+      },
+      "test": {
+        "n_trades": 94,
+        "total_pnl": 0.1523,
+        "total_return": 0.001523,
+        "win_rate": 0.5106,
+        "sharpe": 0.06,
+        "max_dd": -2.901,
+        "avg_ret_bps": 0.162
+      }
+    },
+    "AMZN": {
+      "train": {
+        "n_trades": 415,
+        "total_pnl": -12.496,
+        "total_return": -0.12496,
+        "win_rate": 0.4723,
+        "sharpe": -2.1707,
+        "max_dd": -14.3793,
+        "avg_ret_bps": -3.0111
+      },
+      "val": {
+        "n_trades": 104,
+        "total_pnl": 2.607,
+        "total_return": 0.02607,
+        "win_rate": 0.5,
+        "sharpe": 1.004,
+        "max_dd": -3.3715,
+        "avg_ret_bps": 2.5067
+      },
+      "test": {
+        "n_trades": 138,
+        "total_pnl": -0.783,
+        "total_return": -0.00783,
+        "win_rate": 0.5072,
+        "sharpe": -0.2474,
+        "max_dd": -3.8911,
+        "avg_ret_bps": -0.5674
+      }
+    }
+  },
+  "groups": {
+    "ETFs": {
+      "train": {
+        "n_trades": 579,
+        "total_pnl": -20.6286,
+        "total_return": -0.206286,
+        "win_rate": 0.4629,
+        "sharpe": -3.2987,
+        "max_dd": -23.7539,
+        "avg_ret_bps": -3.5628
+      },
+      "val": {
+        "n_trades": 240,
+        "total_pnl": 0.5806,
+        "total_return": 0.005806,
+        "win_rate": 0.4792,
+        "sharpe": 0.1753,
+        "max_dd": -5.0719,
+        "avg_ret_bps": 0.2419
+      },
+      "test": {
+        "n_trades": 86,
+        "total_pnl": 3.2712,
+        "total_return": 0.032712,
+        "win_rate": 0.5698,
+        "sharpe": 1.4567,
+        "max_dd": -2.4402,
+        "avg_ret_bps": 3.8037
+      }
+    },
+    "NAMES": {
+      "train": {
+        "n_trades": 3120,
+        "total_pnl": -92.2287,
+        "total_return": -0.922287,
+        "win_rate": 0.4734,
+        "sharpe": -4.4136,
+        "max_dd": -95.8371,
+        "avg_ret_bps": -2.956
+      },
+      "val": {
+        "n_trades": 1096,
+        "total_pnl": -15.5711,
+        "total_return": -0.155711,
+        "win_rate": 0.4799,
+        "sharpe": -1.4437,
+        "max_dd": -26.4623,
+        "avg_ret_bps": -1.4207
+      },
+      "test": {
+        "n_trades": 979,
+        "total_pnl": 7.9874,
+        "total_return": 0.079874,
+        "win_rate": 0.5179,
+        "sharpe": 0.6531,
+        "max_dd": -11.2401,
+        "avg_ret_bps": 0.8159
+      }
+    },
+    "ALL": {
+      "train": {
+        "n_trades": 3268,
+        "total_pnl": -92.5801,
+        "total_return": -0.925801,
+        "win_rate": 0.4725,
+        "sharpe": -4.5358,
+        "max_dd": -95.2089,
+        "avg_ret_bps": -2.8329
+      },
+      "val": {
+        "n_trades": 1161,
+        "total_pnl": -14.9184,
+        "total_return": -0.149184,
+        "win_rate": 0.4772,
+        "sharpe": -1.4163,
+        "max_dd": -22.7254,
+        "avg_ret_bps": -1.285
+      },
+      "test": {
+        "n_trades": 1021,
+        "total_pnl": 5.6001,
+        "total_return": 0.056001,
+        "win_rate": 0.5142,
+        "sharpe": 0.4678,
+        "max_dd": -9.3325,
+        "avg_ret_bps": 0.5485
+      }
+    }
+  },
+  "val_selected_subset": [
+    "SPY",
+    "QQQ",
+    "AMZN"
+  ],
+  "n_configs_tried": 12,
+  "selected_subset_metrics": {
+    "train": {
+      "n_trades": 743,
+      "total_pnl": -21.2538,
+      "total_return": -0.212538,
+      "win_rate": 0.4738,
+      "sharpe": -2.9256,
+      "max_dd": -23.9203,
+      "avg_ret_bps": -2.8605
+    },
+    "val": {
+      "n_trades": 231,
+      "total_pnl": 3.5165,
+      "total_return": 0.035165,
+      "win_rate": 0.4848,
+      "sharpe": 1.043,
+      "max_dd": -6.4955,
+      "avg_ret_bps": 1.5223
+    },
+    "test": {
+      "n_trades": 170,
+      "total_pnl": 2.1973,
+      "total_return": 0.021973,
+      "win_rate": 0.5471,
+      "sharpe": 0.6321,
+      "max_dd": -2.4811,
+      "avg_ret_bps": 1.2925
+    }
+  },
+  "cost_sensitivity_test": {
+    "subset": {
+      "0.0": 5.5701,
+      "0.5": 3.8696,
+      "1.0": 2.1973,
+      "2.0": -1.2609,
+      "3.0": -5.059
+    },
+    "ETF-group": {
+      "0.0": 5.1793,
+      "0.5": 4.1315,
+      "1.0": 3.2712,
+      "2.0": 1.5507,
+      "3.0": -0.1695
+    }
+  },
+  "survives_oos": false
+}

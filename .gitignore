@@ -1,0 +1,16 @@
+.env
+__pycache__/
+*.pyc
+
+# agentic_trader artifacts
+logs/
+models/
+data/cache/
+best_params.json
+
+# tooling / caches / research data
+.claude-flow/
+.pytest_cache/
+*.egg-info/
+.DS_Store
+experiments/cache/

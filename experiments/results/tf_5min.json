@@ -1,0 +1,163 @@
+{
+  "name": "tf_5min",
+  "ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "best_params": {
+    "entry_dist": 0.007,
+    "vol_mult": 1.5,
+    "vwap_exit_band": 0.0005,
+    "max_hold": 60,
+    "stop_loss": 0.004,
+    "take_profit": null
+  },
+  "best_spec": {
+    "side": "long",
+    "entry_dist": 0.007,
+    "vol_mult": 1.5,
+    "vwap_exit_band": 0.0005,
+    "max_hold": 60,
+    "stop_loss": 0.004,
+    "take_profit": null,
+    "cooldown_min": 15.0
+  },
+  "n_configs_tried": 40,
+  "five_min": {
+    "train": {
+      "n_trades": 485,
+      "wins": 200,
+      "losses": 285,
+      "win_rate": 0.41237113402061853,
+      "total_pnl": -14.18155221374276,
+      "total_return": -0.1418155221374276,
+      "avg_return_pct": -0.0002924031384276877,
+      "sharpe_like": -1.1953945836809676,
+      "max_drawdown": -24.46978346124242,
+      "turnover": 96985.81844778614,
+      "exits_by_reason": {
+        "stop_loss": 158,
+        "vwap_revert": 29,
+        "max_hold": 166,
+        "eod_flatten": 132
+      }
+    },
+    "val": {
+      "n_trades": 156,
+      "wins": 72,
+      "losses": 84,
+      "win_rate": 0.46153846153846156,
+      "total_pnl": 0.8616119655527603,
+      "total_return": 0.008616119655527603,
+      "avg_return_pct": 5.5231536253383895e-05,
+      "sharpe_like": 0.14935610755467166,
+      "max_drawdown": -8.559143163454717,
+      "turnover": 31200.861611965538,
+      "exits_by_reason": {
+        "stop_loss": 43,
+        "eod_flatten": 54,
+        "vwap_revert": 10,
+        "max_hold": 49
+      }
+    },
+    "test": {
+      "n_trades": 110,
+      "wins": 52,
+      "losses": 58,
+      "win_rate": 0.4727272727272727,
+      "total_pnl": 6.864881479299798,
+      "total_return": 0.06864881479299798,
+      "avg_return_pct": 0.0006240801344818011,
+      "sharpe_like": 1.3414640598996768,
+      "max_drawdown": -4.249965965594913,
+      "turnover": 22006.864881479305,
+      "exits_by_reason": {
+        "max_hold": 39,
+        "eod_flatten": 33,
+        "stop_loss": 25,
+        "vwap_revert": 13
+      }
+    }
+  },
+  "one_min_base": {
+    "train": {
+      "n_trades": 3268,
+      "wins": 1544,
+      "losses": 1724,
+      "win_rate": 0.4724602203182375,
+      "total_pnl": -92.58008730516352,
+      "total_return": -0.9258008730516352,
+      "avg_return_pct": -0.0002832928008113953,
+      "sharpe_like": -4.535828584847694,
+      "max_drawdown": -95.20887211099273,
+      "turnover": 653507.4199126959,
+      "exits_by_reason": {
+        "max_hold": 2436,
+        "stop_loss": 433,
+        "eod_flatten": 180,
+        "vwap_revert": 219
+      }
+    },
+    "val": {
+      "n_trades": 1161,
+      "wins": 554,
+      "losses": 607,
+      "win_rate": 0.4771748492678725,
+      "total_pnl": -14.918368004784115,
+      "total_return": -0.14918368004784116,
+      "avg_return_pct": -0.00012849584844775347,
+      "sharpe_like": -1.4163449564934465,
+      "max_drawdown": -22.725445080052708,
+      "turnover": 232185.08163199524,
+      "exits_by_reason": {
+        "stop_loss": 101,
+        "vwap_revert": 83,
+        "max_hold": 918,
+        "eod_flatten": 59
+      }
+    },
+    "test": {
+      "n_trades": 1021,
+      "wins": 525,
+      "losses": 496,
+      "win_rate": 0.5142017629774731,
+      "total_pnl": 5.600080223938295,
+      "total_return": 0.056000802239382946,
+      "avg_return_pct": 5.4848973789797124e-05,
+      "sharpe_like": 0.46778366766097534,
+      "max_drawdown": -9.332455245975424,
+      "turnover": 204205.60008022378,
+      "exits_by_reason": {
+        "vwap_revert": 83,
+        "max_hold": 775,
+        "stop_loss": 117,
+        "eod_flatten": 46
+      }
+    }
+  },
+  "regime_check": {
+    "sampled": 64,
+    "train_frac_pos": 0.03125,
+    "val_frac_pos": 0.046875,
+    "test_frac_pos": 1.0,
+    "test_pnl_mean": 10.777550053922361,
+    "test_pnl_min": 1.5884222173222446,
+    "test_pnl_max": 20.13954469600565,
+    "test_avg_ntrades": 215.171875,
+    "corr_val_test": -0.10647887077918668,
+    "corr_train_test": -0.1324057807781769
+  }
+}

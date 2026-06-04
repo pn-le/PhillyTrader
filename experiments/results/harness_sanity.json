@@ -1,0 +1,40 @@
+{
+  "window": {
+    "start": "2025-09-02",
+    "end": "2025-09-22",
+    "symbols": [
+      "SPY",
+      "QQQ",
+      "IWM",
+      "AAPL",
+      "MSFT",
+      "NVDA",
+      "AMD",
+      "TSLA",
+      "META",
+      "AMZN"
+    ]
+  },
+  "research": {
+    "n_trades": 322,
+    "total_pnl": -4.8431,
+    "win_rate": 0.5,
+    "exits_by_reason": {
+      "max_hold": 259,
+      "stop_loss": 28,
+      "eod_flatten": 19,
+      "vwap_revert": 16
+    }
+  },
+  "production": {
+    "n_trades": 322,
+    "total_pnl": -4.8431,
+    "win_rate": 0.5,
+    "exits": {
+      "max_hold": 259,
+      "stop_loss": 28,
+      "eod_flatten": 19,
+      "vwap_revert": 16
+    }
+  }
+}

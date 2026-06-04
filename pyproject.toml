@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-trader"
+version = "0.1.0"
+description = "Intraday VWAP mean-reversion PAPER trader (deterministic, agentic). PAPER ONLY."
+requires-python = ">=3.10"
+dependencies = [
+    "alpaca-py>=0.43.4",
+    "pandas>=2.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+ml = [
+    "scikit-learn>=1.8",
+    "pyarrow>=24.0",
+    "joblib>=1.5",
+]
+
+# Console entry: `agentic-trader <command>` == `python3 -m agentic_trader <command>`.
+[project.scripts]
+agentic-trader = "agentic_trader.cli:main"
+
+[tool.setuptools]
+packages = [
+    "agentic_trader",
+    "agentic_trader.agents",
+    "agentic_trader.data",
+    "agentic_trader.ml",
+    "agentic_trader.backtest",
+]

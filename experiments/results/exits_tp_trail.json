@@ -1,0 +1,183 @@
+{
+  "name": "exits_tp_trail",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "frozen_entry": {
+    "side": "long",
+    "entry_dist": 0.005,
+    "vol_mult": 1.2
+  },
+  "param_grid": {
+    "take_profit": [
+      "None",
+      "0.002",
+      "0.003",
+      "0.004",
+      "0.005",
+      "0.007",
+      "0.01"
+    ],
+    "trailing_stop": [
+      "None",
+      "0.002",
+      "0.003",
+      "0.004",
+      "0.005",
+      "0.007"
+    ],
+    "stop_loss": [
+      "0.003",
+      "0.005",
+      "0.008",
+      "0.012"
+    ],
+    "max_hold": [
+      "10",
+      "15",
+      "30",
+      "60"
+    ],
+    "vwap_exit_band": [
+      "0.0005",
+      "0.001",
+      "0.002"
+    ]
+  },
+  "n_configs_tried": 60,
+  "objective": "total_pnl",
+  "best_params": {
+    "take_profit": null,
+    "trailing_stop": 0.004,
+    "stop_loss": 0.012,
+    "max_hold": 30,
+    "vwap_exit_band": 0.0005
+  },
+  "reference_base_exits": {
+    "train": {
+      "n_trades": 3268,
+      "wins": 1544,
+      "losses": 1724,
+      "win_rate": 0.4724602203182375,
+      "total_pnl": -92.58008730516352,
+      "total_return": -0.9258008730516352,
+      "avg_return_pct": -0.0002832928008113953,
+      "sharpe_like": -4.535828584847694,
+      "max_drawdown": -95.20887211099273,
+      "turnover": 653507.4199126959,
+      "exits_by_reason": {
+        "max_hold": 2436,
+        "stop_loss": 433,
+        "eod_flatten": 180,
+        "vwap_revert": 219
+      }
+    },
+    "val": {
+      "n_trades": 1161,
+      "wins": 554,
+      "losses": 607,
+      "win_rate": 0.4771748492678725,
+      "total_pnl": -14.918368004784115,
+      "total_return": -0.14918368004784116,
+      "avg_return_pct": -0.00012849584844775347,
+      "sharpe_like": -1.4163449564934465,
+      "max_drawdown": -22.725445080052708,
+      "turnover": 232185.08163199524,
+      "exits_by_reason": {
+        "stop_loss": 101,
+        "vwap_revert": 83,
+        "max_hold": 918,
+        "eod_flatten": 59
+      }
+    },
+    "test": {
+      "n_trades": 1021,
+      "wins": 525,
+      "losses": 496,
+      "win_rate": 0.5142017629774731,
+      "total_pnl": 5.600080223938295,
+      "total_return": 0.056000802239382946,
+      "avg_return_pct": 5.4848973789797124e-05,
+      "sharpe_like": 0.46778366766097534,
+      "max_drawdown": -9.332455245975424,
+      "turnover": 204205.60008022378,
+      "exits_by_reason": {
+        "vwap_revert": 83,
+        "max_hold": 775,
+        "stop_loss": 117,
+        "eod_flatten": 46
+      }
+    }
+  },
+  "selected": {
+    "train": {
+      "n_trades": 2688,
+      "wins": 1149,
+      "losses": 1539,
+      "win_rate": 0.42745535714285715,
+      "total_pnl": -73.37697208464155,
+      "total_return": -0.7337697208464156,
+      "avg_return_pct": -0.00027297980686250413,
+      "sharpe_like": -3.620989749520014,
+      "max_drawdown": -79.3148844406953,
+      "turnover": 537526.6230279144,
+      "exits_by_reason": {
+        "trailing_stop": 1228,
+        "max_hold": 987,
+        "vwap_revert": 288,
+        "eod_flatten": 185
+      }
+    },
+    "val": {
+      "n_trades": 897,
+      "wins": 399,
+      "losses": 498,
+      "win_rate": 0.44481605351170567,
+      "total_pnl": -10.976848474711916,
+      "total_return": -0.10976848474711916,
+      "avg_return_pct": -0.00012237289269467294,
+      "sharpe_like": -1.018424748431653,
+      "max_drawdown": -23.770259924456383,
+      "turnover": 179389.02315152527,
+      "exits_by_reason": {
+        "trailing_stop": 337,
+        "vwap_revert": 112,
+        "max_hold": 382,
+        "eod_flatten": 66
+      }
+    },
+    "test": {
+      "n_trades": 823,
+      "wins": 374,
+      "losses": 449,
+      "win_rate": 0.45443499392466585,
+      "total_pnl": 0.3321325192679078,
+      "total_return": 0.0033213251926790784,
+      "avg_return_pct": 4.035632068869073e-06,
+      "sharpe_like": 0.029320473954869277,
+      "max_drawdown": -12.714111884152206,
+      "turnover": 164600.3321325192,
+      "exits_by_reason": {
+        "trailing_stop": 364,
+        "vwap_revert": 95,
+        "max_hold": 314,
+        "eod_flatten": 50
+      }
+    }
+  },
+  "survives_oos": false
+}

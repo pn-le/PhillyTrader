@@ -1,0 +1,204 @@
+{
+  "name": "ml_richfeatures",
+  "hypothesis": "A richer decision-time ML entry-gate (RSI, dist-from-prev-close, realized intraday vol, time-of-day, bar range, volume z-score, dist-from-VWAP, vol-ratio, recent return) separates winning base long candidates and improves net OOS return vs the ungated base.",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "features": [
+    "dist_from_vwap",
+    "volume_ratio",
+    "minute_of_session",
+    "session_progress",
+    "recent_return",
+    "bar_range_pct",
+    "rsi14",
+    "dist_prevclose",
+    "realized_vol",
+    "vol_z"
+  ],
+  "base_spec": {
+    "side": "long",
+    "entry_dist": 0.005,
+    "vol_mult": 1.2,
+    "max_hold": 15,
+    "vwap_exit_band": 0.001,
+    "stop_loss": 0.005,
+    "slippage_bps": 1.0
+  },
+  "n_feature_vectors": 726945,
+  "labeled_counts": {
+    "train": 3268,
+    "val": 1161,
+    "test": 1021,
+    "train_pos_rate": 0.4725,
+    "val_pos_rate": 0.4772,
+    "test_pos_rate": 0.5142
+  },
+  "auc_by_model": {
+    "logreg_C1": {
+      "train": 0.5248,
+      "val": 0.4811,
+      "test": 0.5125
+    },
+    "logreg_C0.1": {
+      "train": 0.5247,
+      "val": 0.4812,
+      "test": 0.5125
+    },
+    "gbm_shallow": {
+      "train": 0.6862,
+      "val": 0.469,
+      "test": 0.5217
+    },
+    "gbm_stumps": {
+      "train": 0.6083,
+      "val": 0.4825,
+      "test": 0.5272
+    }
+  },
+  "selected_model": "gbm_stumps",
+  "val_threshold_curve": {
+    "0.4": {
+      "n": 1156,
+      "pnl": -17.8824,
+      "wr": 0.4715
+    },
+    "0.42": {
+      "n": 1141,
+      "pnl": -17.1659,
+      "wr": 0.468
+    },
+    "0.44": {
+      "n": 1121,
+      "pnl": -18.9743,
+      "wr": 0.4701
+    },
+    "0.46": {
+      "n": 1041,
+      "pnl": -11.7478,
+      "wr": 0.4803
+    },
+    "0.48": {
+      "n": 796,
+      "pnl": -17.3162,
+      "wr": 0.4711
+    },
+    "0.5": {
+      "n": 446,
+      "pnl": -15.0003,
+      "wr": 0.4238
+    },
+    "0.52": {
+      "n": 190,
+      "pnl": -0.5083,
+      "wr": 0.4632
+    },
+    "0.54": {
+      "n": 69,
+      "pnl": -0.3963,
+      "wr": 0.4638
+    },
+    "0.56": {
+      "n": 34,
+      "pnl": -1.4527,
+      "wr": 0.3235
+    },
+    "0.58": {
+      "n": 24,
+      "pnl": -1.2507,
+      "wr": 0.2917
+    },
+    "0.6": {
+      "n": 14,
+      "pnl": -0.4564,
+      "wr": 0.3571
+    },
+    "0.62": {
+      "n": 12,
+      "pnl": -0.341,
+      "wr": 0.4167
+    },
+    "0.64": {
+      "n": 3,
+      "pnl": -0.2116,
+      "wr": 0.0
+    }
+  },
+  "selected_threshold": 0.54,
+  "n_configs_tried": 4,
+  "base_metrics": {
+    "train": {
+      "n_trades": 3268,
+      "total_pnl": -92.5801,
+      "total_return": -0.925801,
+      "win_rate": 0.4725,
+      "sharpe": -4.5358,
+      "max_dd": -95.2089,
+      "avg_ret_bps": -2.8329
+    },
+    "val": {
+      "n_trades": 1161,
+      "total_pnl": -14.9184,
+      "total_return": -0.149184,
+      "win_rate": 0.4772,
+      "sharpe": -1.4163,
+      "max_dd": -22.7254,
+      "avg_ret_bps": -1.285
+    },
+    "test": {
+      "n_trades": 1021,
+      "total_pnl": 5.6001,
+      "total_return": 0.056001,
+      "win_rate": 0.5142,
+      "sharpe": 0.4678,
+      "max_dd": -9.3325,
+      "avg_ret_bps": 0.5485
+    }
+  },
+  "gated_metrics": {
+    "train": {
+      "n_trades": 173,
+      "total_pnl": 9.0587,
+      "total_return": 0.090587,
+      "win_rate": 0.5954,
+      "sharpe": 1.9054,
+      "max_dd": -3.501,
+      "avg_ret_bps": 5.2363
+    },
+    "val": {
+      "n_trades": 69,
+      "total_pnl": -0.3963,
+      "total_return": -0.003963,
+      "win_rate": 0.4638,
+      "sharpe": -0.1779,
+      "max_dd": -2.5888,
+      "avg_ret_bps": -0.5744
+    },
+    "test": {
+      "n_trades": 43,
+      "total_pnl": 3.5238,
+      "total_return": 0.035238,
+      "win_rate": 0.7209,
+      "sharpe": 1.4668,
+      "max_dd": -1.8329,
+      "avg_ret_bps": 8.1949
+    }
+  },
+  "selected_test_auc": 0.5272,
+  "selected_val_auc": 0.4825,
+  "survives_oos": false
+}

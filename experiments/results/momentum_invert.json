@@ -1,0 +1,77 @@
+{
+  "name": "momentum_invert",
+  "hypothesis": "Data favors TREND not reversion: go LONG on breakout >= entry_dist ABOVE VWAP with high volume, ride continuation, exit on fade/stop/TP/time.",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "n_configs_tried": 40,
+  "selected_config": {
+    "entry_dist": 0.003,
+    "vol_mult": 2.0,
+    "fade_band": -0.002,
+    "max_hold": 45,
+    "stop_loss": 0.006,
+    "take_profit": null,
+    "trailing_stop": 0.006,
+    "mom_min": 0.001
+  },
+  "train": {
+    "n_trades": 1125,
+    "win_rate": 0.464,
+    "total_pnl": 6.6401,
+    "total_return": 0.066401,
+    "sharpe": 0.3996,
+    "max_dd": -10.5539,
+    "exits": {
+      "trailing_stop": 333,
+      "max_hold": 742,
+      "vwap_fade": 22,
+      "eod_flatten": 28
+    }
+  },
+  "val": {
+    "n_trades": 455,
+    "win_rate": 0.4286,
+    "total_pnl": 0.0322,
+    "total_return": 0.000322,
+    "sharpe": 0.0029,
+    "max_dd": -22.4288,
+    "exits": {
+      "trailing_stop": 130,
+      "max_hold": 292,
+      "eod_flatten": 18,
+      "vwap_fade": 15
+    }
+  },
+  "test": {
+    "n_trades": 522,
+    "win_rate": 0.4732,
+    "total_pnl": 28.5002,
+    "total_return": 0.285002,
+    "sharpe": 2.216,
+    "max_dd": -8.4375,
+    "exits": {
+      "max_hold": 332,
+      "trailing_stop": 162,
+      "eod_flatten": 25,
+      "vwap_fade": 3
+    }
+  },
+  "test_pnl_per_trade": 0.05459808429118774,
+  "naive_gate_pass": true,
+  "survives_oos": false
+}

@@ -1,0 +1,326 @@
+{
+  "name": "tod_filter",
+  "hypothesis": "Restricting VWAP mean-reversion entries to mid-session (skip open ~9:30-10:00 and close ~15:30-16:00) improves OOS edge vs entering all day.",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "select_objective": "total_pnl",
+  "min_val_trades_guard": 30,
+  "n_configs_tried": 120,
+  "selected_params": {
+    "open_cut": "10:30",
+    "close_cut": "15:55",
+    "side": "long",
+    "entry_dist": 0.008,
+    "vol_mult": 1.0,
+    "max_hold": 15,
+    "stop_loss": 0.005,
+    "vwap_exit_band": 0.001
+  },
+  "selected_splits": {
+    "train": {
+      "n_trades": 1855,
+      "wins": 874,
+      "losses": 981,
+      "win_rate": 0.471159,
+      "total_pnl": -61.947547,
+      "total_return": -0.619475,
+      "avg_return_pct": -0.000334,
+      "sharpe_like": -3.669251,
+      "max_drawdown": -70.319633,
+      "turnover": 370938.052453,
+      "exits_by_reason": {
+        "max_hold": 1424,
+        "vwap_revert": 34,
+        "eod_flatten": 104,
+        "stop_loss": 293
+      }
+    },
+    "val": {
+      "n_trades": 635,
+      "wins": 321,
+      "losses": 314,
+      "win_rate": 0.505512,
+      "total_pnl": 7.139635,
+      "total_return": 0.071396,
+      "avg_return_pct": 0.000112,
+      "sharpe_like": 0.845366,
+      "max_drawdown": -13.406692,
+      "turnover": 127007.139635,
+      "exits_by_reason": {
+        "max_hold": 525,
+        "vwap_revert": 13,
+        "stop_loss": 53,
+        "eod_flatten": 44
+      }
+    },
+    "test": {
+      "n_trades": 497,
+      "wins": 268,
+      "losses": 229,
+      "win_rate": 0.539235,
+      "total_pnl": 14.281318,
+      "total_return": 0.142813,
+      "avg_return_pct": 0.000287,
+      "sharpe_like": 1.542297,
+      "max_drawdown": -8.465068,
+      "turnover": 99414.281318,
+      "exits_by_reason": {
+        "max_hold": 398,
+        "stop_loss": 65,
+        "eod_flatten": 19,
+        "vwap_revert": 15
+      }
+    }
+  },
+  "reference_canonical_10_1530": {
+    "spec_side": "long",
+    "splits": {
+      "train": {
+        "n_trades": 2960,
+        "wins": 1403,
+        "losses": 1557,
+        "win_rate": 0.473986,
+        "total_pnl": -81.703819,
+        "total_return": -0.817038,
+        "avg_return_pct": -0.000276,
+        "sharpe_like": -4.201413,
+        "max_drawdown": -83.719376,
+        "turnover": 591918.296181,
+        "exits_by_reason": {
+          "max_hold": 2362,
+          "stop_loss": 398,
+          "vwap_revert": 200
+        }
+      },
+      "val": {
+        "n_trades": 1048,
+        "wins": 487,
+        "losses": 561,
+        "win_rate": 0.464695,
+        "total_pnl": -19.178205,
+        "total_return": -0.191782,
+        "avg_return_pct": -0.000183,
+        "sharpe_like": -1.93394,
+        "max_drawdown": -24.301769,
+        "turnover": 209580.821795,
+        "exits_by_reason": {
+          "vwap_revert": 73,
+          "stop_loss": 95,
+          "max_hold": 880
+        }
+      },
+      "test": {
+        "n_trades": 928,
+        "wins": 485,
+        "losses": 443,
+        "win_rate": 0.522629,
+        "total_pnl": 9.694204,
+        "total_return": 0.096942,
+        "avg_return_pct": 0.000104,
+        "sharpe_like": 0.845897,
+        "max_drawdown": -8.528564,
+        "turnover": 185609.694204,
+        "exits_by_reason": {
+          "vwap_revert": 78,
+          "max_hold": 743,
+          "stop_loss": 107
+        }
+      }
+    }
+  },
+  "reference_no_filter": {
+    "spec_side": "long",
+    "splits": {
+      "train": {
+        "n_trades": 3268,
+        "wins": 1544,
+        "losses": 1724,
+        "win_rate": 0.47246,
+        "total_pnl": -92.580087,
+        "total_return": -0.925801,
+        "avg_return_pct": -0.000283,
+        "sharpe_like": -4.535829,
+        "max_drawdown": -95.208872,
+        "turnover": 653507.419913,
+        "exits_by_reason": {
+          "max_hold": 2436,
+          "stop_loss": 433,
+          "eod_flatten": 180,
+          "vwap_revert": 219
+        }
+      },
+      "val": {
+        "n_trades": 1161,
+        "wins": 554,
+        "losses": 607,
+        "win_rate": 0.477175,
+        "total_pnl": -14.918368,
+        "total_return": -0.149184,
+        "avg_return_pct": -0.000128,
+        "sharpe_like": -1.416345,
+        "max_drawdown": -22.725445,
+        "turnover": 232185.081632,
+        "exits_by_reason": {
+          "stop_loss": 101,
+          "vwap_revert": 83,
+          "max_hold": 918,
+          "eod_flatten": 59
+        }
+      },
+      "test": {
+        "n_trades": 1021,
+        "wins": 525,
+        "losses": 496,
+        "win_rate": 0.514202,
+        "total_pnl": 5.60008,
+        "total_return": 0.056001,
+        "avg_return_pct": 5.5e-05,
+        "sharpe_like": 0.467784,
+        "max_drawdown": -9.332455,
+        "turnover": 204205.60008,
+        "exits_by_reason": {
+          "vwap_revert": 83,
+          "max_hold": 775,
+          "stop_loss": 117,
+          "eod_flatten": 46
+        }
+      }
+    }
+  },
+  "beta_strip_diagnostic": {
+    "note": "Market-NEUTRAL (side='both') versions of the selected window/params and of the canonical 10:00-15:30 window. If the positive TEST were real TOD alpha it would survive here; if it collapses to negative it was directional beta in a lucky late up-market.",
+    "spy_pct_move_per_split": {
+      "train": 0.07011,
+      "val": -0.00251,
+      "test": 0.10659
+    },
+    "neutral_selected_window": {
+      "train": {
+        "n_trades": 3592,
+        "wins": 1684,
+        "losses": 1908,
+        "win_rate": 0.46882,
+        "total_pnl": -105.302886,
+        "total_return": -1.053029,
+        "avg_return_pct": -0.000293,
+        "sharpe_like": -4.744537,
+        "max_drawdown": -110.156538,
+        "turnover": 718377.710999,
+        "exits_by_reason": {
+          "vwap_revert": 57,
+          "max_hold": 2834,
+          "eod_flatten": 209,
+          "stop_loss": 492
+        }
+      },
+      "val": {
+        "n_trades": 1323,
+        "wins": 662,
+        "losses": 661,
+        "win_rate": 0.500378,
+        "total_pnl": -6.27263,
+        "total_return": -0.062726,
+        "avg_return_pct": -4.7e-05,
+        "sharpe_like": -0.535851,
+        "max_drawdown": -27.7492,
+        "turnover": 264619.485139,
+        "exits_by_reason": {
+          "vwap_revert": 22,
+          "max_hold": 1098,
+          "stop_loss": 121,
+          "eod_flatten": 82
+        }
+      },
+      "test": {
+        "n_trades": 1416,
+        "wins": 676,
+        "losses": 740,
+        "win_rate": 0.477401,
+        "total_pnl": -25.823817,
+        "total_return": -0.258238,
+        "avg_return_pct": -0.000182,
+        "sharpe_like": -1.801647,
+        "max_drawdown": -28.792848,
+        "turnover": 283259.811748,
+        "exits_by_reason": {
+          "max_hold": 1117,
+          "vwap_revert": 28,
+          "stop_loss": 198,
+          "eod_flatten": 73
+        }
+      }
+    },
+    "neutral_canonical_10_1530": {
+      "train": {
+        "n_trades": 5747,
+        "wins": 2685,
+        "losses": 3062,
+        "win_rate": 0.4672,
+        "total_pnl": -133.336126,
+        "total_return": -1.333361,
+        "avg_return_pct": -0.000232,
+        "sharpe_like": -5.192822,
+        "max_drawdown": -137.444978,
+        "turnover": 1149384.084511,
+        "exits_by_reason": {
+          "max_hold": 4758,
+          "stop_loss": 642,
+          "vwap_revert": 347
+        }
+      },
+      "val": {
+        "n_trades": 2131,
+        "wins": 1012,
+        "losses": 1119,
+        "win_rate": 0.474894,
+        "total_pnl": -36.330172,
+        "total_return": -0.363302,
+        "avg_return_pct": -0.00017,
+        "sharpe_like": -2.584428,
+        "max_drawdown": -42.53627,
+        "turnover": 426194.59921,
+        "exits_by_reason": {
+          "vwap_revert": 141,
+          "max_hold": 1810,
+          "stop_loss": 180
+        }
+      },
+      "test": {
+        "n_trades": 2197,
+        "wins": 1039,
+        "losses": 1158,
+        "win_rate": 0.472918,
+        "total_pnl": -48.154905,
+        "total_return": -0.481549,
+        "avg_return_pct": -0.000219,
+        "sharpe_like": -2.875553,
+        "max_drawdown": -51.592649,
+        "turnover": 439466.536416,
+        "exits_by_reason": {
+          "vwap_revert": 140,
+          "max_hold": 1791,
+          "stop_loss": 266
+        }
+      }
+    }
+  },
+  "verdict": {
+    "survives_oos": false,
+    "reason": "Selected config is positive on TEST (+pnl) ONLY because it is long-only during a +10.7% SPY rally in the test window; TRAIN is negative every month, and the market-neutral (both-side) version is negative on all three splits. No genuine time-of-day mean-reversion edge."
+  }
+}

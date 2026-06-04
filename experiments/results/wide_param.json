@@ -1,0 +1,77 @@
+{
+  "name": "wide_param",
+  "hypothesis": "Base LONG VWAP mean-reversion has a profitable parameter region missed by the narrow default search.",
+  "best_config": {
+    "entry_dist": 0.01,
+    "vol_mult": 2.0,
+    "max_hold": 10,
+    "vwap_exit_band": 0.0005,
+    "stop_loss": 0.02
+  },
+  "n_configs_tried": 120,
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "train": {
+    "n_trades": 936,
+    "win_rate": 0.5139,
+    "total_pnl": -9.7519,
+    "total_return": -0.097519,
+    "avg_return_pct": -0.00010419,
+    "sharpe": -0.7973,
+    "max_dd": -25.6468,
+    "exits": {
+      "max_hold": 876,
+      "eod_flatten": 52,
+      "vwap_revert": 7,
+      "stop_loss": 1
+    }
+  },
+  "val": {
+    "n_trades": 244,
+    "win_rate": 0.5,
+    "total_pnl": 4.154,
+    "total_return": 0.04154,
+    "avg_return_pct": 0.00017025,
+    "sharpe": 0.7621,
+    "max_dd": -7.4769,
+    "exits": {
+      "max_hold": 224,
+      "eod_flatten": 18,
+      "vwap_revert": 2
+    }
+  },
+  "test": {
+    "n_trades": 209,
+    "win_rate": 0.5694,
+    "total_pnl": 15.0475,
+    "total_return": 0.150475,
+    "avg_return_pct": 0.00071998,
+    "sharpe": 2.3834,
+    "max_dd": -3.5244,
+    "exits": {
+      "max_hold": 196,
+      "eod_flatten": 8,
+      "vwap_revert": 5
+    }
+  },
+  "train_to_test_return_degradation": -0.247995,
+  "regime_luck_frac_test_positive": 0.7167,
+  "n_configs_positive_all_three_splits": 0,
+  "survives_oos": false,
+  "notes": "WIDE random search over a 120-sample of a 26,880-combo grid (entry_dist x vol_mult x max_hold x vwap_exit_band x stop_loss); 120 unique configs evaluated. Tuned on TRAIN, selected the single best by VAL net total_pnl under train>=30/val>=15 trade guards, then evaluated TEST exactly once. TRAIN ret=-0.09752 (n=936, pnl=-9.75), VAL ret=+0.04154 (n=244, pnl=+4.15), TEST ret=+0.15048 (n=209, pnl=+15.05). NEGATIVE-EDGE VERDICT despite a positive raw TEST number: (1) the selected config LOSES money in-sample (TRAIN pnl=-9.75) \u2014 a config that doesn't work on TRAIN but 'wins' OOS is the textbook overfit/regime artifact, not edge (inverted, non-sane train->test gap). (2) Regime-luck audit: 72% of ALL 120 tried configs are positive on this TEST window (even the narrow default base config is positive on TEST while losing on TRAIN+VAL), and 0 of 120 configs are positive on ALL THREE splits \u2014 so TEST positivity is a property of a favorable test regime (2026-04-10..2026-06-03), not of any discovered edge. Conclusion: the hypothesis is FALSE \u2014 there is no profitable, robust parameter region for the base LONG VWAP mean-reversion after costs on this thin IEX data; the apparent OOS gain is regime luck, so survives_oos=False."
+}

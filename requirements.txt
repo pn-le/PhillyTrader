@@ -1,0 +1,16 @@
+# agentic_trader — Python 3.14 (PAPER ONLY). Verified versions in ENV_REPORT.md.
+
+# --- Core (required) ---
+alpaca-py>=0.43.4
+pandas>=2.0
+numpy>=1.24
+
+# --- Optional ML / training stack ---
+# The system FALLS BACK to numpy / csv / json if these are absent:
+#   * scikit-learn missing  -> ml/train_model.py uses a numpy logistic-regression fallback
+#   * pyarrow missing       -> datasets are stored as CSV instead of Parquet
+#   * joblib missing        -> models are persisted as a JSON weight dump instead of .pkl
+# Verified present & working on Python 3.14 in this environment (ENV_REPORT.md):
+scikit-learn>=1.8    # optional: LogisticRegression entry scorer
+pyarrow>=24.0        # optional: Parquet dataset format
+joblib>=1.5          # optional: model persistence

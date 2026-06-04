@@ -1,0 +1,159 @@
+{
+  "name": "short_side",
+  "hypothesis": "Shorting when price >= entry_dist ABOVE VWAP with elevated volume, covering on revert/stop/time, has out-of-sample edge.",
+  "split_ranges": {
+    "train": [
+      "2025-09-02",
+      "2026-02-12",
+      114
+    ],
+    "val": [
+      "2026-02-13",
+      "2026-04-09",
+      38
+    ],
+    "test": [
+      "2026-04-10",
+      "2026-06-03",
+      38
+    ]
+  },
+  "n_configs_tried": 60,
+  "best_config": {
+    "entry_dist": 0.012,
+    "vol_mult": 1.5,
+    "max_hold": 30,
+    "stop_loss": 0.008,
+    "take_profit": 0.003,
+    "trend_filter": "against",
+    "time_window": [
+      "11:00",
+      "15:55"
+    ]
+  },
+  "baseline_default": {
+    "train": {
+      "n_trades": 3297,
+      "wins": 1507,
+      "losses": 1790,
+      "win_rate": 0.4570821959356991,
+      "total_pnl": -74.19094288260602,
+      "total_return": -0.7419094288260603,
+      "avg_return_pct": -0.0002250256077725387,
+      "sharpe_like": -4.0638731098586005,
+      "max_drawdown": -79.41091793968299,
+      "turnover": 659474.1909428838,
+      "exits_by_reason": {
+        "max_hold": 2617,
+        "stop_loss": 311,
+        "vwap_revert": 192,
+        "eod_flatten": 177
+      }
+    },
+    "val": {
+      "n_trades": 1212,
+      "wins": 587,
+      "losses": 625,
+      "win_rate": 0.48432343234323433,
+      "total_pnl": -24.102123827762746,
+      "total_return": -0.24102123827762745,
+      "avg_return_pct": -0.00019886240781982463,
+      "sharpe_like": -2.2801684026638673,
+      "max_drawdown": -31.06736821019933,
+      "turnover": 242424.10212382735,
+      "exits_by_reason": {
+        "max_hold": 981,
+        "vwap_revert": 76,
+        "stop_loss": 100,
+        "eod_flatten": 55
+      }
+    },
+    "test": {
+      "n_trades": 1559,
+      "wins": 701,
+      "losses": 858,
+      "win_rate": 0.4496472097498396,
+      "total_pnl": -60.7936156437679,
+      "total_return": -0.607936156437679,
+      "avg_return_pct": -0.0003899526340203201,
+      "sharpe_like": -4.42639428608751,
+      "max_drawdown": -62.45158247016523,
+      "turnover": 311860.79361564387,
+      "exits_by_reason": {
+        "vwap_revert": 89,
+        "max_hold": 1189,
+        "stop_loss": 199,
+        "eod_flatten": 82
+      }
+    }
+  },
+  "train": {
+    "n_trades": 154,
+    "wins": 92,
+    "losses": 62,
+    "win_rate": 0.5974025974025974,
+    "total_pnl": 2.4289469598701063,
+    "total_return": 0.024289469598701062,
+    "avg_return_pct": 0.0001577238285629939,
+    "sharpe_like": 0.512569332046596,
+    "max_drawdown": -4.537926797033037,
+    "turnover": 30797.57105304013,
+    "exits_by_reason": {
+      "max_hold": 63,
+      "take_profit": 64,
+      "eod_flatten": 19,
+      "stop_loss": 8
+    }
+  },
+  "val": {
+    "n_trades": 69,
+    "wins": 42,
+    "losses": 27,
+    "win_rate": 0.6086956521739131,
+    "total_pnl": 1.7847018308173366,
+    "total_return": 0.017847018308173365,
+    "avg_return_pct": 0.0002586524392488893,
+    "sharpe_like": 0.6117960006146703,
+    "max_drawdown": -4.241021829577592,
+    "turnover": 13798.21529816918,
+    "exits_by_reason": {
+      "stop_loss": 4,
+      "take_profit": 31,
+      "max_hold": 24,
+      "eod_flatten": 10
+    }
+  },
+  "test": {
+    "n_trades": 98,
+    "wins": 57,
+    "losses": 41,
+    "win_rate": 0.5816326530612245,
+    "total_pnl": 1.6860069872406096,
+    "total_return": 0.016860069872406097,
+    "avg_return_pct": 0.0001720415293102663,
+    "sharpe_like": 0.4244608448945967,
+    "max_drawdown": -5.04858054719645,
+    "turnover": 19598.313993012755,
+    "exits_by_reason": {
+      "take_profit": 45,
+      "max_hold": 37,
+      "eod_flatten": 9,
+      "stop_loss": 7
+    }
+  },
+  "survives_oos": false,
+  "verdict": "NO genuine short-side edge. The arithmetic gate (TEST pnl>0 AND n>=20) passes, but rigorous scrutiny rejects it as noise/overfit: (1) magnitude +1.69 over 98 TEST trades = +1.7 bps/trade, BELOW the 2 bps round-trip slippage already paid; (2) baseline + every meaningfully-traded variant LOSE on TRAIN (default short = -74.19 TRAIN / -60.79 TEST); (3) the selected config is knife-edge: entry_dist 0.012->0.010 flips TEST +1.69 -> -3.69, and removing trend_filter='against' gives TEST -5.28; (4) concentration: 76% of TEST PnL is one symbol (AMZN) on 5 trades, while the highest-activity symbol AMD (57 trades) LOSES. The one positive config is a multiple-comparisons artifact of sampling 60 configs.",
+  "robustness_test_neighbors": {
+    "selected": 1.686,
+    "entry_dist_0.010": -3.686,
+    "entry_dist_0.014": -0.860,
+    "trend_filter_None": -5.282,
+    "trend_filter_with": -4.165,
+    "vol_mult_1.2": 0.719,
+    "vol_mult_2.0": 4.703
+  },
+  "test_per_symbol_pnl": {
+    "AMZN": 1.278, "TSLA": 0.947, "MSFT": 0.345, "NVDA": 0.234,
+    "META": -0.122, "AMD": -0.996
+  }
+}
