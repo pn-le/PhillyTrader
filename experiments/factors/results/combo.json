@@ -1,0 +1,215 @@
+{
+  "name": "combo_mom_rev_lowvol",
+  "hypothesis": "An equal-ish blend of cross-sectionally z-scored 12-1 momentum + 1-month reversal + 63d low-vol, dollar-neutral quintile L/S, monthly rebalance, is more robust OOS than any single factor. Blend weights tuned on TRAIN only; OOS once.",
+  "construction": "Per day d (close): z-score cross-sectionally each of mom(252-skip-21), rev(-1m), lowvol(-std63); composite = w_mom*z_mom + w_rev*z_rev + w_lv*z_lv (name scored only if all 3 present). Rank composite, LONG top 20% / SHORT bottom 20% equal-dollar (gross=1, net=0), monthly (21d) rebalance. Blend weights from a 88-point simplex grid (>=2 factors active) selected by TRAIN net Sharpe per fold; scored OOS once. Costs on turnover, both sides.",
+  "n_configs_tried": 88,
+  "n_folds": 4,
+  "folds_positive": 1,
+  "oos_annual_return": -0.014466138272403235,
+  "oos_sharpe": -0.14729518182918355,
+  "oos_max_drawdown": -0.2973028266973635,
+  "oos_total_return": -0.06526846158845467,
+  "oos_n_days": 882,
+  "oos_avg_turnover": 0.06377646901433294,
+  "cost_bps_base": 5.0,
+  "alpha_annual": -0.025248248520966046,
+  "alpha_tstat": -0.48045220576694464,
+  "beta": 0.05281614762594557,
+  "beta_tstat": 2.388764644202935,
+  "r2": 0.006442538787443608,
+  "survives_oos": false,
+  "survives_at_costs": "none",
+  "cost_curve": {
+    "0bp": {
+      "oos_annual_return": -0.006393859480017685,
+      "oos_sharpe": -0.06515473252007112,
+      "alpha_annual": -0.01717189835041436,
+      "alpha_tstat": -0.3270283331113185,
+      "beta": 0.05279620398733404,
+      "oos_total_return": -0.03845534336764389
+    },
+    "2bp": {
+      "oos_annual_return": -0.009622770996971904,
+      "oos_sharpe": -0.09803310699186167,
+      "alpha_annual": -0.020402438418635035,
+      "alpha_tstat": -0.3884531033899764,
+      "beta": 0.05280418144277868,
+      "oos_total_return": -0.04926945785650827
+    },
+    "5bp": {
+      "oos_annual_return": -0.014466138272403235,
+      "oos_sharpe": -0.14729518182918355,
+      "alpha_annual": -0.025248248520966046,
+      "alpha_tstat": -0.48045220576694464,
+      "beta": 0.05281614762594557,
+      "oos_total_return": -0.06526846158845467
+    },
+    "10bp": {
+      "oos_annual_return": -0.02253841706478883,
+      "oos_sharpe": -0.22917935623768404,
+      "alpha_annual": -0.03332459869151778,
+      "alpha_tstat": -0.6332822251596155,
+      "beta": 0.052836091264557024,
+      "oos_total_return": -0.09135154198916784
+    }
+  },
+  "fold_records": [
+    {
+      "fold": 0,
+      "train": [
+        "2020-07-27",
+        "2022-11-22",
+        588
+      ],
+      "test": [
+        "2022-11-23",
+        "2023-10-10",
+        220
+      ],
+      "n_days": 221,
+      "total_return": -0.11122758064433647,
+      "annual_return": -0.13019752857311462,
+      "sharpe": -1.4146913538690062,
+      "max_drawdown": -0.13848614132006964,
+      "avg_turnover": 0.06461953691686276,
+      "chosen_params": {
+        "w_mom": 0.125,
+        "w_rev": 0.5,
+        "w_lowvol": 0.375,
+        "train_sharpe": 1.1166
+      }
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2020-07-27",
+        "2023-10-10",
+        808
+      ],
+      "test": [
+        "2023-10-11",
+        "2024-08-27",
+        221
+      ],
+      "n_days": 222,
+      "total_return": -0.07038519669892285,
+      "annual_return": -0.08005826226219499,
+      "sharpe": -1.0724150633615808,
+      "max_drawdown": -0.12693959475274263,
+      "avg_turnover": 0.07505278695423831,
+      "chosen_params": {
+        "w_mom": 0.166667,
+        "w_rev": 0.666667,
+        "w_lowvol": 0.166667,
+        "train_sharpe": 0.5944
+      }
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2020-07-27",
+        "2024-08-27",
+        1029
+      ],
+      "test": [
+        "2024-08-28",
+        "2025-07-17",
+        221
+      ],
+      "n_days": 222,
+      "total_return": -0.09549914162933282,
+      "annual_return": -0.1096850677851054,
+      "sharpe": -1.1925507937360724,
+      "max_drawdown": -0.1222412973589404,
+      "avg_turnover": 0.07427790233818543,
+      "chosen_params": {
+        "w_mom": 0.25,
+        "w_rev": 0.75,
+        "w_lowvol": 0.0,
+        "train_sharpe": 0.4951
+      }
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2020-07-27",
+        "2025-07-17",
+        1250
+      ],
+      "test": [
+        "2025-07-18",
+        "2026-06-03",
+        221
+      ],
+      "n_days": 221,
+      "total_return": 0.25078974852347335,
+      "annual_return": 0.26306578791357177,
+      "sharpe": 2.103110983402414,
+      "max_drawdown": -0.06584966360113542,
+      "avg_turnover": 0.04105710798712329,
+      "chosen_params": {
+        "w_mom": 0.8,
+        "w_rev": 0.2,
+        "w_lowvol": 0.0,
+        "train_sharpe": 0.3507
+      }
+    }
+  ],
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.0003608804193418688,
+      "alpha_annual": -0.09094186567415094,
+      "beta": -0.32897252346554823,
+      "alpha_tstat": -1.0645771994292297,
+      "beta_tstat": -8.679025313129468,
+      "r2": 0.25679828525920356,
+      "n_days": 220,
+      "strat_mean_daily": -0.0005190052996871993,
+      "strat_ann_return": -0.13078933552117422
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": -0.00013907484777548018,
+      "alpha_annual": -0.03504686163942101,
+      "beta": -0.15083904917707094,
+      "alpha_tstat": -0.44673300413905004,
+      "beta_tstat": -3.814295155014877,
+      "r2": 0.06229466633410774,
+      "n_days": 221,
+      "strat_mean_daily": -0.00031912903508955125,
+      "strat_ann_return": -0.08042051684256692
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": -0.000556729459837653,
+      "alpha_annual": -0.14029582387908857,
+      "beta": 0.18058852425569397,
+      "alpha_tstat": -1.540193223792173,
+      "beta_tstat": 6.216504987255782,
+      "r2": 0.14999299081149953,
+      "n_days": 221,
+      "strat_mean_daily": -0.00043722769963896785,
+      "strat_ann_return": -0.1101813803090199
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": 0.0006458166627216549,
+      "alpha_annual": 0.16274579900585703,
+      "beta": 0.4459982547003917,
+      "alpha_tstat": 1.3320052966633864,
+      "beta_tstat": 7.05748870540499,
+      "r2": 0.1859844348167249,
+      "n_days": 220,
+      "strat_mean_daily": 0.0010486569106944329,
+      "strat_ann_return": 0.2642615414949971
+    }
+  ],
+  "panel": {
+    "n_names": 97,
+    "n_days": 1471,
+    "start": "2020-07-27",
+    "end": "2026-06-03"
+  },
+  "caveats": "SURVIVORSHIP/LOOK-AHEAD: today's large-caps applied backward (no point-in-time membership on free data) inflates results. Data starts 2020-07-27 so it covers the 2022 bear + 2023-26 bull + 2025 tariff selloff but NOT 2018Q4 or the COVID crash. SPY benchmark from same IEX daily feed (daily bars full quality). Target is a small REAL edge (Sharpe ~0.5-1), not a printer."
+}

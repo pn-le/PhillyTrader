@@ -1,0 +1,161 @@
+{
+  "name": "momentum",
+  "hypothesis": "Cross-sectional 12-1 price momentum: long top-quantile trailing-return names, short bottom-quantile (dollar-neutral), monthly rebalance. Tests for a small beta-neutral alpha surviving walk-forward OOS + 5bp/side cost.",
+  "construction": "score = close.shift(skip)/close.shift(skip+lookback)-1 (trailing return skipping most recent month); dollar-neutral L/S top vs bottom quantile, equal-weight each leg; per-fold TRAIN-tuned lookback/skip/quantile/rebalance (max TRAIN net Sharpe @5bp), scored OOS once.",
+  "data_window": "2020-07-27..2026-06-03",
+  "n_names": 97,
+  "n_trading_days": 1471,
+  "n_configs_per_fold": 36,
+  "n_configs_tried_total": 144,
+  "n_folds": 4,
+  "folds_positive": 3,
+  "base_cost_bps": 5.0,
+  "base_5bp": {
+    "oos_annual_return": 0.1350072313037398,
+    "oos_sharpe": 0.8359955283530568,
+    "oos_max_drawdown": -0.21205245792178684,
+    "oos_total_return": 0.5323597605865364,
+    "oos_n_days": 882,
+    "oos_avg_turnover": 0.031230309111229808,
+    "alpha_annual": 0.10816794424235171,
+    "alpha_tstat": 1.2570568951327612,
+    "beta": 0.1314721993125916,
+    "beta_tstat": 3.6314326422464163,
+    "r2": 0.014764319858063812
+  },
+  "cost_sensitivity": {
+    "2bp": {
+      "oos_annual_return": 0.13737895020710117,
+      "oos_sharpe": 0.8507166275551169,
+      "alpha_annual": 0.11053895798735457,
+      "alpha_tstat": 1.284665222116309
+    },
+    "5bp": {
+      "oos_annual_return": 0.1350072313037398,
+      "oos_sharpe": 0.8359955283530568,
+      "alpha_annual": 0.10816794424235171,
+      "alpha_tstat": 1.2570568951327612
+    },
+    "10bp": {
+      "oos_annual_return": 0.13105436646480412,
+      "oos_sharpe": 0.8114310209152905,
+      "alpha_annual": 0.1042162546673469,
+      "alpha_tstat": 1.210999661000527
+    }
+  },
+  "survives_at_costs": "2bp,5bp,10bp",
+  "survives_oos": false,
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_annual": -0.058676628743805186,
+      "beta": -0.26926206139836145,
+      "alpha_tstat": -0.40998067668952737,
+      "n_days": 220
+    },
+    {
+      "fold": 1,
+      "alpha_annual": -0.05219411764082029,
+      "beta": 0.491249630525359,
+      "alpha_tstat": -0.34209139924733445,
+      "n_days": 221
+    },
+    {
+      "fold": 2,
+      "alpha_annual": 0.10556314907864386,
+      "beta": -0.033434111869663864,
+      "alpha_tstat": 0.8501427469151801,
+      "n_days": 221
+    },
+    {
+      "fold": 3,
+      "alpha_annual": 0.26766220729628715,
+      "beta": 0.7399830584572296,
+      "alpha_tstat": 1.2406269014202176,
+      "n_days": 220
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "test": [
+        "2022-11-23",
+        "2023-10-10",
+        220
+      ],
+      "n_days": 221,
+      "annual_return": -0.0908784628080786,
+      "sharpe": -0.6571282246021714,
+      "max_drawdown": -0.21205245792178684,
+      "avg_turnover": 0.03360891731616,
+      "chosen_params": {
+        "lookback_months": 12,
+        "skip_months": 0,
+        "quantile": 0.1,
+        "rebalance_days": 21,
+        "train_sharpe": 0.6956
+      }
+    },
+    {
+      "fold": 1,
+      "test": [
+        "2023-10-11",
+        "2024-08-27",
+        221
+      ],
+      "n_days": 222,
+      "annual_return": 0.09514737365891544,
+      "sharpe": 0.6213673245778752,
+      "max_drawdown": -0.14376851003439994,
+      "avg_turnover": 0.031273277669186486,
+      "chosen_params": {
+        "lookback_months": 12,
+        "skip_months": 0,
+        "quantile": 0.1,
+        "rebalance_days": 21,
+        "train_sharpe": 0.2058
+      }
+    },
+    {
+      "fold": 2,
+      "test": [
+        "2024-08-28",
+        "2025-07-17",
+        221
+      ],
+      "n_days": 222,
+      "annual_return": 0.0995373735633999,
+      "sharpe": 0.8597068179410714,
+      "max_drawdown": -0.08784817396670319,
+      "avg_turnover": 0.031056334962802988,
+      "chosen_params": {
+        "lookback_months": 12,
+        "skip_months": 0,
+        "quantile": 0.1,
+        "rebalance_days": 21,
+        "train_sharpe": 0.3667
+      }
+    },
+    {
+      "fold": 3,
+      "test": [
+        "2025-07-18",
+        "2026-06-03",
+        221
+      ],
+      "n_days": 221,
+      "annual_return": 0.4341199294440265,
+      "sharpe": 1.9872402800180915,
+      "max_drawdown": -0.09584579482222011,
+      "avg_turnover": 0.028983299282246994,
+      "chosen_params": {
+        "lookback_months": 12,
+        "skip_months": 0,
+        "quantile": 0.1,
+        "rebalance_days": 21,
+        "train_sharpe": 0.4423
+      }
+    }
+  ],
+  "caveats": "Universe = today's large-caps applied backward (survivorship/membership bias INFLATES results). Free-tier window 2020-07..2026-06 MISSES 2018Q4 and the 2020 COVID crash; spans 2022 bear + 2023-26 bull + 2025 tariff selloff. Momentum is crash-prone (2009/2020 momentum crashes) and this window largely dodges those regimes. Daily OLS t-stats are not regime-robust over ~4y OOS."
+}

@@ -1,0 +1,211 @@
+{
+  "name": "lowvol",
+  "hypothesis": "Low-volatility anomaly: LONG lowest trailing-vol quintile / SHORT highest, dollar-neutral, monthly rebalance. Score = -trailing realized vol.",
+  "construction": "Each rebalance, rank universe by -trailing_vol(lookback); long top quantile, short bottom, equal dollars per leg (gross=1, net=0). Tuned lookback{20/60/120} x quantile{0.1/0.2/0.3} x rebalance{21/42d} on each fold's TRAIN net Sharpe (5bp); scored OOS once. Strict t->t+1, turnover costs both sides.",
+  "n_folds": 4,
+  "n_configs_per_fold": 18,
+  "n_configs_total": 72,
+  "folds_positive": 0,
+  "oos_annual_return": -0.23823118167459065,
+  "oos_sharpe": -1.6438340959916486,
+  "oos_max_drawdown": -0.6008371051993939,
+  "oos_total_return": -0.5814685538350299,
+  "oos_n_days": 882,
+  "oos_avg_turnover": 0.043013879826294364,
+  "beta_decompose": {
+    "alpha_per_day": -0.0004625563097584906,
+    "alpha_annual": -0.11656419005913964,
+    "beta": -0.5959855392150912,
+    "alpha_tstat": -1.8978831362127906,
+    "beta_tstat": -23.06363440543486,
+    "r2": 0.376740183896042,
+    "n_days": 882,
+    "strat_mean_daily": -0.0009453618320420263,
+    "strat_ann_return": -0.23823118167459065
+  },
+  "fold_records": [
+    {
+      "fold": 0,
+      "train": [
+        "2020-07-27",
+        "2022-11-22",
+        588
+      ],
+      "test": [
+        "2022-11-23",
+        "2023-10-10",
+        220
+      ],
+      "n_days": 221,
+      "total_return": -0.16730063640274384,
+      "annual_return": -0.20432757357006615,
+      "sharpe": -2.1929106133508793,
+      "max_drawdown": -0.2101588453236497,
+      "avg_turnover": 0.05395767361677528,
+      "chosen_params": {
+        "lookback": 20,
+        "top_q": 0.2,
+        "rebalance": 21,
+        "train_sharpe": -0.03067436486155299
+      }
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2020-07-27",
+        "2023-10-10",
+        808
+      ],
+      "test": [
+        "2023-10-11",
+        "2024-08-27",
+        221
+      ],
+      "n_days": 222,
+      "total_return": -0.06146191867570172,
+      "annual_return": -0.06808694663424136,
+      "sharpe": -0.7695179206768509,
+      "max_drawdown": -0.1346055463301874,
+      "avg_turnover": 0.05766688893031659,
+      "chosen_params": {
+        "lookback": 20,
+        "top_q": 0.2,
+        "rebalance": 21,
+        "train_sharpe": -0.5101227016482955
+      }
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2020-07-27",
+        "2024-08-27",
+        1029
+      ],
+      "test": [
+        "2024-08-28",
+        "2025-07-17",
+        221
+      ],
+      "n_days": 222,
+      "total_return": -0.14967679386713773,
+      "annual_return": -0.1672463444528141,
+      "sharpe": -0.9147607777695436,
+      "max_drawdown": -0.20043776819368464,
+      "avg_turnover": 0.03111780765002328,
+      "chosen_params": {
+        "lookback": 60,
+        "top_q": 0.1,
+        "rebalance": 21,
+        "train_sharpe": -0.4458973041447572
+      }
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2020-07-27",
+        "2025-07-17",
+        1250
+      ],
+      "test": [
+        "2025-07-18",
+        "2026-06-03",
+        221
+      ],
+      "n_days": 221,
+      "total_return": -0.37019815161774117,
+      "annual_return": -0.5100430672247872,
+      "sharpe": -2.8005282082846708,
+      "max_drawdown": -0.38614186129376593,
+      "avg_turnover": 0.02930067428033493,
+      "chosen_params": {
+        "lookback": 60,
+        "top_q": 0.1,
+        "rebalance": 21,
+        "train_sharpe": -0.5411899249692976
+      }
+    }
+  ],
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.0006222986564749089,
+      "alpha_annual": -0.15681926143167704,
+      "beta": -0.39988652906777644,
+      "alpha_tstat": -1.9625780116428693,
+      "beta_tstat": -11.278785229448811,
+      "r2": 0.3685021555893836,
+      "n_days": 220,
+      "strat_mean_daily": -0.000814509266936952,
+      "strat_ann_return": -0.2052563352681119
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": 0.0002622114325070469,
+      "alpha_annual": 0.06607728099177582,
+      "beta": -0.4470364090496305,
+      "alpha_tstat": 0.8774760785435601,
+      "beta_tstat": -11.77680876554799,
+      "r2": 0.3877435051125143,
+      "n_days": 221,
+      "strat_mean_daily": -0.0002714088585937222,
+      "strat_ann_return": -0.068395032365618
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": -0.00024954403934351584,
+      "alpha_annual": -0.062885097914566,
+      "beta": -0.630365544616882,
+      "alpha_tstat": -0.4349128438165739,
+      "beta_tstat": -13.670129590591294,
+      "r2": 0.4604216084034862,
+      "n_days": 221,
+      "strat_mean_daily": -0.0006666790287388628,
+      "strat_ann_return": -0.16800311524219344
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": -0.0011897033856393278,
+      "alpha_annual": -0.2998052531811106,
+      "beta": -0.9338422609606853,
+      "alpha_tstat": -1.9310572222264661,
+      "beta_tstat": -11.629212236445841,
+      "r2": 0.38285336300712547,
+      "n_days": 220,
+      "strat_mean_daily": -0.0020331803365201653,
+      "strat_ann_return": -0.5123614448030817
+    }
+  ],
+  "cost_sensitivity": {
+    "2bp": {
+      "oos_annual_return": -0.23496458474378235,
+      "oos_sharpe": -1.6214908108689705,
+      "oos_total_return": -0.5766474423502104,
+      "alpha_annual": -0.11331279725747763,
+      "alpha_tstat": -1.8451642553760006,
+      "beta": -0.5959110618158617,
+      "folds_positive": 0
+    },
+    "5bp": {
+      "oos_annual_return": -0.23823118167459065,
+      "oos_sharpe": -1.6438340959916486,
+      "oos_total_return": -0.5814685538350299,
+      "alpha_annual": -0.11656419005913964,
+      "alpha_tstat": -1.8978831362127906,
+      "beta": -0.5959855392150912,
+      "folds_positive": 0
+    },
+    "10bp": {
+      "oos_annual_return": -0.24367550989260442,
+      "oos_sharpe": -1.6808951723745553,
+      "oos_total_return": -0.5893851668012755,
+      "alpha_annual": -0.1219831780619094,
+      "alpha_tstat": -1.985406035910928,
+      "beta": -0.5961096682138073,
+      "folds_positive": 0
+    }
+  },
+  "base_cost_bps": 5.0,
+  "survives_at_costs": [],
+  "survives_oos": false,
+  "survivorship_caveat": "Universe is TODAY's ~97 large-cap survivors applied backward (no point-in-time membership on free data) -> INFLATES results; treat marginal edges skeptically. Window omits 2018Q4 and 2020 COVID (free-tier floor ~2020-07)."
+}
