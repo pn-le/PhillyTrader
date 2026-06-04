@@ -1,0 +1,175 @@
+{
+  "name": "spy_hedged",
+  "hypothesis": "The base LONG VWAP mean-reversion has real alpha hidden by market beta; SPY-hedging it to ~zero net beta exposes that alpha.",
+  "construction": "SPY-hedge: run the production-identical LONG mean-reversion, then per-bar short SPY notional == net long market value (rebalanced t->t+1, 1bp/side slippage on every hedge adjustment), net beta -> ~0. Walk-forward over 4 sequential OOS folds; long-leg params tuned on each fold's TRAIN only; concatenated-OOS regression on SPY.",
+  "n_folds": 4,
+  "folds_positive": 1,
+  "n_configs_tried": 96,
+  "return_base": 500.0,
+  "oos_n_days": 303,
+  "oos_n_trades": 2727,
+  "oos_total_return": -0.131044,
+  "oos_mean_return": -0.00043249,
+  "oos_sharpe": -2.2113,
+  "oos_per_trade_net_pnl": -0.024027,
+  "beta_decompose_concat_oos": {
+    "alpha_per_day": -0.000511,
+    "alpha_annual": -0.128666,
+    "beta": 0.078024,
+    "alpha_tstat": -2.959337,
+    "beta_tstat": 4.947357,
+    "r2": 0.075202,
+    "n_days": 303,
+    "strat_mean_daily": -0.000432,
+    "strat_ann_return": -0.108987
+  },
+  "unhedged_diagnostic": {
+    "alpha_per_day": -0.000187,
+    "alpha_annual": -0.047217,
+    "beta": 0.191144,
+    "alpha_tstat": -0.519022,
+    "beta_tstat": 6.178732,
+    "r2": 0.137734,
+    "n_days": 241,
+    "strat_mean_daily": -0.000143,
+    "strat_ann_return": -0.036049
+  },
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.00077,
+      "alpha_annual": -0.193956,
+      "beta": 0.056095,
+      "alpha_tstat": -1.915567,
+      "beta_tstat": 2.45413,
+      "r2": 0.076215,
+      "n_days": 75,
+      "strat_mean_daily": -0.000694,
+      "strat_ann_return": -0.174871
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": -0.000899,
+      "alpha_annual": -0.226637,
+      "beta": 0.231125,
+      "alpha_tstat": -2.661051,
+      "beta_tstat": 4.359276,
+      "r2": 0.204329,
+      "n_days": 76,
+      "strat_mean_daily": -0.000653,
+      "strat_ann_return": -0.164624
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": -0.000532,
+      "alpha_annual": -0.134072,
+      "beta": 0.108744,
+      "alpha_tstat": -1.6031,
+      "beta_tstat": 2.464569,
+      "r2": 0.075856,
+      "n_days": 76,
+      "strat_mean_daily": -0.000509,
+      "strat_ann_return": -0.128143
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": 3.8e-05,
+      "alpha_annual": 0.009597,
+      "beta": 0.061174,
+      "alpha_tstat": 0.13265,
+      "beta_tstat": 1.845422,
+      "r2": 0.043997,
+      "n_days": 76,
+      "strat_mean_daily": 0.000122,
+      "strat_ann_return": 0.030821
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train": [
+        "2024-01-02",
+        "2025-03-19",
+        303
+      ],
+      "test": [
+        "2025-03-20",
+        "2025-07-08",
+        75
+      ],
+      "n_trades": 822,
+      "total_return": -0.052045,
+      "n_days": 75,
+      "long_pnl": -1.8217,
+      "hedge_pnl": -24.2007,
+      "hedge_cost_total": 11.4638,
+      "hedge_rebalances": 1166,
+      "net_total_pnl": -26.0224
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2024-01-02",
+        "2025-07-08",
+        378
+      ],
+      "test": [
+        "2025-07-09",
+        "2025-10-23",
+        76
+      ],
+      "n_trades": 593,
+      "total_return": -0.049648,
+      "n_days": 76,
+      "long_pnl": -18.4107,
+      "hedge_pnl": -6.4135,
+      "hedge_cost_total": 8.3645,
+      "hedge_rebalances": 833,
+      "net_total_pnl": -24.8242
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2024-01-02",
+        "2025-10-23",
+        454
+      ],
+      "test": [
+        "2025-10-24",
+        "2026-02-12",
+        76
+      ],
+      "n_trades": 803,
+      "total_return": -0.038646,
+      "n_days": 76,
+      "long_pnl": -16.0559,
+      "hedge_pnl": -3.2672,
+      "hedge_cost_total": 12.9663,
+      "hedge_rebalances": 1268,
+      "net_total_pnl": -19.3232
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2024-01-02",
+        "2026-02-12",
+        530
+      ],
+      "test": [
+        "2026-02-13",
+        "2026-06-03",
+        76
+      ],
+      "n_trades": 509,
+      "total_return": 0.009295,
+      "n_days": 76,
+      "long_pnl": 19.0504,
+      "hedge_pnl": -14.4029,
+      "hedge_cost_total": 8.4682,
+      "hedge_rebalances": 844,
+      "net_total_pnl": 4.6476
+    }
+  ],
+  "survives_oos": false,
+  "notes": "SPY-hedged LONG VWAP mean-reversion, walk-forward over 4 sequential OOS regimes (2024-01-02..2026-06-03, 606d incl. the 2025 -19% drawdown, 2025-H2 grind-up, late-2025 chop, the 2026-Mar selloff + Apr/May +16% rally). Long-leg params tuned on each fold's TRAIN ONLY (96 configs scored across all folds, <= 48); each TEST scored once; OOS days concatenated and regressed on SPY. The hedge DID neutralize beta as designed (concat-OOS beta=+0.078 hedged vs +0.191 unhedged), confirming the residual long exposure is real and removable. But removing the beta did NOT reveal hidden alpha: concat-OOS hedged alpha_annual=-0.1287 with alpha_tstat=-2.96 (need >=2), 1/4 folds net-positive, OOS Sharpe=-2.21, per-trade net=$-0.0240 vs a ~$0.02 round-trip floor (hedge slippage alone is large: each fold rebalances thousands of times). The UNHEDGED twin's alpha is also insignificant (alpha_t=-0.52), so the long-only PnL the prior hunt saw was indeed mostly beta (R^2 unhedged=0.138), and once that beta is hedged away what remains is sub-floor noise, not alpha. CONCLUSION: the hypothesis is FALSE on this IEX data \u2014 there is no hidden, beta-neutral, regime-consistent alpha in the base long mean-reversion; hedging exposes its absence rather than a buried edge. survives_oos=False."
+}

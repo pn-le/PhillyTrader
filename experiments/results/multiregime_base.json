@@ -1,0 +1,176 @@
+{
+  "name": "multiregime_base",
+  "role": "control_baseline",
+  "hypothesis": "The original long-only VWAP mean-reversion base strategy has NO market-neutral alpha across regimes; its OOS 'edge' is directional SPY beta (beta ~1, alpha ~0) and per-fold returns flip sign with the regime. Run as the anchor/control to quantify the prior beta artifact.",
+  "construction": "long-only (no hedge, no short leg) \u2014 DELIBERATELY beta-loaded; this is the control, not a neutral candidate",
+  "spec": {
+    "mode": "long_short",
+    "enable_long": true,
+    "enable_short": false,
+    "side": "long",
+    "entry_dist": 0.005,
+    "vol_mult": 1.2,
+    "vwap_exit_band": 0.001,
+    "max_hold": 15,
+    "stop_loss": 0.005,
+    "take_profit": null,
+    "trailing_stop": null,
+    "trend_filter": null,
+    "time_window": null,
+    "notional": 100.0,
+    "max_positions": 4,
+    "max_exposure": 500.0,
+    "cooldown_min": 10.0,
+    "slippage_bps": 1.0,
+    "eod_flatten": "15:55",
+    "return_base": 500.0
+  },
+  "n_configs_tried": 1,
+  "n_folds": 4,
+  "folds_positive": 0,
+  "oos_total_return": -0.30161769752300754,
+  "oos_mean_return": -0.0010053923250766918,
+  "oos_sharpe": -2.3679421568391237,
+  "oos_n_trades": 8633,
+  "oos_n_days": 300,
+  "beta_decompose": {
+    "alpha_per_day": -0.0012792368148860046,
+    "alpha_annual": -0.32236767735127314,
+    "beta": 0.27562057736382717,
+    "alpha_tstat": -3.6563858854318876,
+    "beta_tstat": 8.65715276231164,
+    "r2": 0.20095733666158355,
+    "n_days": 300,
+    "strat_mean_daily": -0.0010053923250766918,
+    "strat_ann_return": -0.2533588659193263
+  },
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.0013251724401130008,
+      "alpha_annual": -0.3339434549084762,
+      "beta": 0.239768499799723,
+      "alpha_tstat": -1.2766766790169035,
+      "beta_tstat": 4.060477342828817,
+      "r2": 0.1842433929555204,
+      "n_days": 75,
+      "strat_mean_daily": -0.001001457215322144,
+      "strat_ann_return": -0.2523672182611803
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": -0.0014262745006482658,
+      "alpha_annual": -0.359421174163363,
+      "beta": 0.37852720586723226,
+      "alpha_tstat": -2.7432456425166296,
+      "beta_tstat": 4.6457128442065745,
+      "r2": 0.22818823881341832,
+      "n_days": 75,
+      "strat_mean_daily": -0.0010474405215897026,
+      "strat_ann_return": -0.26395501144060507
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": -0.0018385925887686903,
+      "alpha_annual": -0.46332533236970996,
+      "beta": 0.4933260563368524,
+      "alpha_tstat": -2.91174376251122,
+      "beta_tstat": 5.91486253583609,
+      "r2": 0.32398393119859525,
+      "n_days": 75,
+      "strat_mean_daily": -0.0017241838892390327,
+      "strat_ann_return": -0.43449434008823623
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": -0.0005164254546329355,
+      "alpha_annual": -0.13013921456749974,
+      "beta": 0.19256911073070104,
+      "alpha_tstat": -1.1868025311749508,
+      "beta_tstat": 3.8582817973068733,
+      "r2": 0.16938171158105153,
+      "n_days": 75,
+      "strat_mean_daily": -0.00024848767415588865,
+      "strat_ann_return": -0.06261889388728394
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train": [
+        "2024-01-02",
+        "2025-03-19",
+        303
+      ],
+      "test": [
+        "2025-03-20",
+        "2025-07-08",
+        75
+      ],
+      "n_trades": 2277,
+      "total_return": -0.0751092911491608,
+      "mean_daily_return": -0.001001457215322144,
+      "n_days": 75,
+      "net_pnl": -37.55464557458039,
+      "win_rate": 0.48221343873517786
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2024-01-02",
+        "2025-07-08",
+        378
+      ],
+      "test": [
+        "2025-07-09",
+        "2025-10-23",
+        76
+      ],
+      "n_trades": 1863,
+      "total_return": -0.0785580391192277,
+      "mean_daily_return": -0.0010474405215897026,
+      "n_days": 75,
+      "net_pnl": -39.27901955961384,
+      "win_rate": 0.49168008588298445
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2024-01-02",
+        "2025-10-23",
+        454
+      ],
+      "test": [
+        "2025-10-24",
+        "2026-02-12",
+        76
+      ],
+      "n_trades": 2311,
+      "total_return": -0.12931379169292745,
+      "mean_daily_return": -0.0017241838892390327,
+      "n_days": 75,
+      "net_pnl": -64.65689584646371,
+      "win_rate": 0.46992643877109475
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2024-01-02",
+        "2026-02-12",
+        530
+      ],
+      "test": [
+        "2026-02-13",
+        "2026-06-03",
+        76
+      ],
+      "n_trades": 2182,
+      "total_return": -0.01863657556169165,
+      "mean_daily_return": -0.00024848767415588865,
+      "n_days": 75,
+      "net_pnl": -9.31828778084582,
+      "win_rate": 0.49450045829514205
+    }
+  ],
+  "survives_oos": false
+}

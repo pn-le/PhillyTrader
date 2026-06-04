@@ -1,0 +1,260 @@
+{
+  "name": "ls_pairs",
+  "hypothesis": "Dollar-neutral symmetric long/short VWAP reversion (long below VWAP, short above) strips market beta and reveals intraday cross-name mean-reversion alpha.",
+  "construction": "long/short symmetric VWAP mean-reversion (mode=long_short, side=both)",
+  "n_folds": 4,
+  "n_configs_tried": 288,
+  "folds_positive": 0,
+  "oos_n_trades": 8127,
+  "oos_n_days": 301,
+  "oos_total_return": -0.32421685076749346,
+  "oos_mean_return": -0.0010771323945763902,
+  "oos_sharpe": -2.318849776548312,
+  "per_trade_bp": -1.9946896195859078,
+  "beta": -0.07058492238006132,
+  "beta_tstat": -1.821678986088263,
+  "alpha_per_day": -0.0010079322864105355,
+  "alpha_annual": -0.25399893617545494,
+  "alpha_tstat": -2.371093103323223,
+  "r2": 0.010976880908958542,
+  "survives_oos": false,
+  "folds": [
+    {
+      "fold": 0,
+      "train": [
+        "2024-01-02",
+        "2025-03-19",
+        303
+      ],
+      "test": [
+        "2025-03-20",
+        "2025-07-08",
+        75
+      ],
+      "tuned_params": {
+        "entry_dist": 0.008,
+        "vol_mult": 1.5,
+        "vwap_exit_band": 0.001,
+        "max_hold": 20,
+        "stop_loss": 0.005
+      },
+      "train_diag": {
+        "best_params": {
+          "entry_dist": 0.008,
+          "vol_mult": 1.5,
+          "vwap_exit_band": 0.001,
+          "max_hold": 20,
+          "stop_loss": 0.005
+        },
+        "train_score": -1.849643313995145,
+        "train_n_trades": 8680,
+        "train_n_long": 4428,
+        "train_n_short": 4252,
+        "train_total_return": -1.8395050651472187
+      },
+      "n_trades": 2458,
+      "n_long": 1181,
+      "n_short": 1277,
+      "ls_imbalance": 0.03905614320585842,
+      "oos_total_return": -0.0743096622252447,
+      "oos_mean_daily": -0.000990795496336596,
+      "oos_n_days": 75,
+      "net_total_pnl": -37.15483111262237,
+      "win_rate": 0.47030105777054515,
+      "turnover": 491601.3169838231
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2024-01-02",
+        "2025-07-08",
+        378
+      ],
+      "test": [
+        "2025-07-09",
+        "2025-10-23",
+        76
+      ],
+      "tuned_params": {
+        "entry_dist": 0.008,
+        "vol_mult": 1.5,
+        "vwap_exit_band": 0.001,
+        "max_hold": 20,
+        "stop_loss": 0.005
+      },
+      "train_diag": {
+        "best_params": {
+          "entry_dist": 0.008,
+          "vol_mult": 1.5,
+          "vwap_exit_band": 0.001,
+          "max_hold": 20,
+          "stop_loss": 0.005
+        },
+        "train_score": -2.2146446853055846,
+        "train_n_trades": 11138,
+        "train_n_long": 5609,
+        "train_n_short": 5529,
+        "train_total_return": -2.2110533762734423
+      },
+      "n_trades": 1566,
+      "n_long": 750,
+      "n_short": 816,
+      "ls_imbalance": 0.0421455938697318,
+      "oos_total_return": -0.09494053977078766,
+      "oos_mean_daily": -0.0012492176285629954,
+      "oos_n_days": 76,
+      "net_total_pnl": -47.470269885393826,
+      "win_rate": 0.47126436781609193,
+      "turnover": 313200.08017704537
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2024-01-02",
+        "2025-10-23",
+        454
+      ],
+      "test": [
+        "2025-10-24",
+        "2026-02-12",
+        76
+      ],
+      "tuned_params": {
+        "entry_dist": 0.008,
+        "vol_mult": 1.5,
+        "vwap_exit_band": 0.0005,
+        "max_hold": 20,
+        "stop_loss": 0.005
+      },
+      "train_diag": {
+        "best_params": {
+          "entry_dist": 0.008,
+          "vol_mult": 1.5,
+          "vwap_exit_band": 0.0005,
+          "max_hold": 20,
+          "stop_loss": 0.005
+        },
+        "train_score": -2.6860449790794934,
+        "train_n_trades": 12700,
+        "train_n_long": 6356,
+        "train_n_short": 6344,
+        "train_total_return": -2.6855725381346116
+      },
+      "n_trades": 1959,
+      "n_long": 1026,
+      "n_short": 933,
+      "ls_imbalance": 0.04747320061255743,
+      "oos_total_return": -0.10410005438161939,
+      "oos_mean_daily": -0.0014067574916435052,
+      "oos_n_days": 74,
+      "net_total_pnl": -52.0500271908097,
+      "win_rate": 0.4726901480347116,
+      "turnover": 391771.9285101256
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2024-01-02",
+        "2026-02-12",
+        530
+      ],
+      "test": [
+        "2026-02-13",
+        "2026-06-03",
+        76
+      ],
+      "tuned_params": {
+        "entry_dist": 0.008,
+        "vol_mult": 1.5,
+        "vwap_exit_band": 0.001,
+        "max_hold": 20,
+        "stop_loss": 0.005
+      },
+      "train_diag": {
+        "best_params": {
+          "entry_dist": 0.008,
+          "vol_mult": 1.5,
+          "vwap_exit_band": 0.001,
+          "max_hold": 20,
+          "stop_loss": 0.005
+        },
+        "train_score": -3.2091789824659953,
+        "train_n_trades": 14664,
+        "train_n_long": 7386,
+        "train_n_short": 7278,
+        "train_total_return": -3.2054964947409545
+      },
+      "n_trades": 2144,
+      "n_long": 893,
+      "n_short": 1251,
+      "ls_imbalance": 0.1669776119402985,
+      "oos_total_return": -0.05086659438984166,
+      "oos_mean_daily": -0.0006692972946031798,
+      "oos_n_days": 76,
+      "net_total_pnl": -25.433297194920844,
+      "win_rate": 0.48880597014925375,
+      "turnover": 428856.86402001395
+    }
+  ],
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.0007763135502276426,
+      "alpha_annual": -0.19563101465736593,
+      "beta": -0.15886189624196384,
+      "alpha_tstat": -0.5715260743835577,
+      "beta_tstat": -2.055867209651956,
+      "r2": 0.054729724368420274,
+      "n_days": 75,
+      "strat_mean_daily": -0.000990795496336596,
+      "strat_ann_return": -0.24968046507682218
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": -0.00151230142411488,
+      "alpha_annual": -0.38109995887694975,
+      "beta": 0.24709099735559004,
+      "alpha_tstat": -2.8035057015558973,
+      "beta_tstat": 2.9198747111093266,
+      "r2": 0.1033092915361904,
+      "n_days": 76,
+      "strat_mean_daily": -0.0012492176285629954,
+      "strat_ann_return": -0.31480284239787487
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": -0.0014185847548796103,
+      "alpha_annual": -0.3574833582296618,
+      "beta": 0.10562435028681053,
+      "alpha_tstat": -2.31166932572428,
+      "beta_tstat": 1.3066896723970534,
+      "r2": 0.023165069205997924,
+      "n_days": 74,
+      "strat_mean_daily": -0.0014067574916435052,
+      "strat_ann_return": -0.3545028878941633
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": -0.0006435746678867743,
+      "alpha_annual": -0.1621808163074671,
+      "beta": -0.018683981908920407,
+      "alpha_tstat": -1.1121147055705805,
+      "beta_tstat": -0.2796297228774483,
+      "r2": 0.001055543864936448,
+      "n_days": 76,
+      "strat_mean_daily": -0.0006692972946031798,
+      "strat_ann_return": -0.1686629182400013
+    }
+  ],
+  "beta_decompose": {
+    "alpha_per_day": -0.0010079322864105355,
+    "alpha_annual": -0.25399893617545494,
+    "beta": -0.07058492238006132,
+    "alpha_tstat": -2.371093103323223,
+    "beta_tstat": -1.821678986088263,
+    "r2": 0.010976880908958542,
+    "n_days": 301,
+    "strat_mean_daily": -0.0010771323945763902,
+    "strat_ann_return": -0.2714373634332503
+  }
+}

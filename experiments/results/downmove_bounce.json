@@ -1,0 +1,234 @@
+{
+  "name": "downmove_bounce",
+  "hypothesis": "Sharp short-horizon DOWN move on elevated volume -> LONG bounce; built BETA-NEUTRAL via per-bar SPY short hedge. Test across 4 OOS regime folds, net of 1bp/side on every leg incl. hedge rebalances.",
+  "construction": "spy_hedge: long sharp-drop-bounce book + per-bar SPY short sized to net long market value (1bp/side on every hedge rebalance).",
+  "n_folds": 4,
+  "n_configs_tried": 96,
+  "grid_space": 216,
+  "folds_positive": 1,
+  "oos_n_days": 303,
+  "oos_n_trades": 556,
+  "oos_total_return": -0.07004639087474664,
+  "oos_mean_return": -0.00023117620750741464,
+  "oos_sharpe": -2.1735503950438466,
+  "beta_decompose": {
+    "alpha_per_day": -0.0002654519525274958,
+    "alpha_annual": -0.06689389203692894,
+    "beta": 0.034247347475435765,
+    "alpha_tstat": -2.789947480186734,
+    "beta_tstat": 3.9377687289358754,
+    "r2": 0.04899124015726797,
+    "n_days": 303,
+    "strat_mean_daily": -0.00023117620750741464,
+    "strat_ann_return": -0.058256404291868485
+  },
+  "fold_betas": [
+    {
+      "fold": 0,
+      "alpha_per_day": -0.0007064895930200705,
+      "alpha_annual": -0.17803537744105777,
+      "beta": 0.04065414796735231,
+      "alpha_tstat": -2.5142341517056197,
+      "beta_tstat": 2.5432043132048263,
+      "r2": 0.08138995922678804,
+      "n_days": 75,
+      "strat_mean_daily": -0.0006516017880793672,
+      "strat_ann_return": -0.16420365059600053
+    },
+    {
+      "fold": 1,
+      "alpha_per_day": -0.00041338647803879417,
+      "alpha_annual": -0.10417339246577613,
+      "beta": 0.13335053263687224,
+      "alpha_tstat": -2.3136502289896033,
+      "beta_tstat": 4.7575176047854875,
+      "r2": 0.23422377119763393,
+      "n_days": 76,
+      "strat_mean_daily": -0.0002714049220920731,
+      "strat_ann_return": -0.06839404036720242
+    },
+    {
+      "fold": 2,
+      "alpha_per_day": 0.00017292488216351167,
+      "alpha_annual": 0.04357707030520494,
+      "beta": -0.03493467083624162,
+      "alpha_tstat": 1.53250608845417,
+      "beta_tstat": -2.328701475965723,
+      "r2": 0.06827821622675012,
+      "n_days": 76,
+      "strat_mean_daily": 0.0001653667046091191,
+      "strat_ann_return": 0.041672409561498015
+    },
+    {
+      "fold": 3,
+      "alpha_per_day": -0.00019189270018268002,
+      "alpha_annual": -0.048356960446035366,
+      "beta": 0.014015884727529838,
+      "alpha_tstat": -1.8089120686031497,
+      "beta_tstat": 1.1443075707566435,
+      "r2": 0.017387459257188986,
+      "n_days": 76,
+      "strat_mean_daily": -0.00017259674000117875,
+      "strat_ann_return": -0.043494378480297045
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "train": [
+        "2024-01-02",
+        "2025-03-19",
+        303
+      ],
+      "test": [
+        "2025-03-20",
+        "2025-07-08",
+        75
+      ],
+      "n_trades": 309,
+      "total_return": -0.04887013410595254,
+      "mean_daily_return": -0.0006516017880793672,
+      "n_days": 75,
+      "long_pnl": -9.774030346252458,
+      "hedge_pnl": -14.661036706723817,
+      "net_total_pnl": -24.435067052976272,
+      "hedge_rebalances": 491,
+      "win_rate": 0.5080906148867314,
+      "exits": {
+        "stop_loss": 120,
+        "max_hold": 80,
+        "take_profit": 107,
+        "eod_flatten": 2
+      }
+    },
+    {
+      "fold": 1,
+      "train": [
+        "2024-01-02",
+        "2025-07-08",
+        378
+      ],
+      "test": [
+        "2025-07-09",
+        "2025-10-23",
+        76
+      ],
+      "n_trades": 83,
+      "total_return": -0.020626774078997556,
+      "mean_daily_return": -0.0002714049220920731,
+      "n_days": 76,
+      "long_pnl": -9.307615329085145,
+      "hedge_pnl": -1.005771710413635,
+      "net_total_pnl": -10.31338703949878,
+      "hedge_rebalances": 147,
+      "win_rate": 0.46987951807228917,
+      "exits": {
+        "max_hold": 41,
+        "take_profit": 13,
+        "stop_loss": 29
+      }
+    },
+    {
+      "fold": 2,
+      "train": [
+        "2024-01-02",
+        "2025-10-23",
+        454
+      ],
+      "test": [
+        "2025-10-24",
+        "2026-02-12",
+        76
+      ],
+      "n_trades": 88,
+      "total_return": 0.012567869550293053,
+      "mean_daily_return": 0.0001653667046091191,
+      "n_days": 76,
+      "long_pnl": 9.221843885271342,
+      "hedge_pnl": -2.937909110124815,
+      "net_total_pnl": 6.283934775146527,
+      "hedge_rebalances": 170,
+      "win_rate": 0.6818181818181818,
+      "exits": {
+        "max_hold": 30,
+        "stop_loss": 12,
+        "take_profit": 46
+      }
+    },
+    {
+      "fold": 3,
+      "train": [
+        "2024-01-02",
+        "2026-02-12",
+        530
+      ],
+      "test": [
+        "2026-02-13",
+        "2026-06-03",
+        76
+      ],
+      "n_trades": 76,
+      "total_return": -0.013117352240089586,
+      "mean_daily_return": -0.00017259674000117875,
+      "n_days": 76,
+      "long_pnl": -4.493342611416345,
+      "hedge_pnl": -2.0653335086284477,
+      "net_total_pnl": -6.558676120044793,
+      "hedge_rebalances": 143,
+      "win_rate": 0.5263157894736842,
+      "exits": {
+        "stop_loss": 27,
+        "max_hold": 15,
+        "take_profit": 33,
+        "eod_flatten": 1
+      }
+    }
+  ],
+  "selected_per_fold": [
+    {
+      "fold": 0,
+      "spec": {
+        "drop_k": 5,
+        "drop_thr": -0.008,
+        "vol_mult": 1.2,
+        "bounce_tp": 0.006,
+        "stop_loss": 0.006,
+        "max_hold": 15
+      }
+    },
+    {
+      "fold": 1,
+      "spec": {
+        "drop_k": 5,
+        "drop_thr": -0.008,
+        "vol_mult": 1.5,
+        "bounce_tp": 0.006,
+        "stop_loss": 0.006,
+        "max_hold": 10
+      }
+    },
+    {
+      "fold": 2,
+      "spec": {
+        "drop_k": 5,
+        "drop_thr": -0.008,
+        "vol_mult": 1.5,
+        "bounce_tp": 0.004,
+        "stop_loss": 0.008,
+        "max_hold": 10
+      }
+    },
+    {
+      "fold": 3,
+      "spec": {
+        "drop_k": 5,
+        "drop_thr": -0.008,
+        "vol_mult": 1.5,
+        "bounce_tp": 0.004,
+        "stop_loss": 0.006,
+        "max_hold": 15
+      }
+    }
+  ],
+  "survives_oos": false
+}
