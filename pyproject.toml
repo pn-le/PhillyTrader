@@ -24,6 +24,14 @@ ml = [
 [project.scripts]
 agentic-trader = "agentic_trader.cli:main"
 
+[tool.ruff]
+target-version = "py310"
+
+[tool.ruff.lint]
+# Errors only: E9 = syntax/indentation errors, F = pyflakes (undefined names,
+# unused imports/variables). Style rules deliberately not enforced.
+select = ["E9", "F"]
+
 [tool.setuptools]
 packages = [
     "agentic_trader",

@@ -1,5 +1,7 @@
 # PhillyTrader
 
+[![tests](https://github.com/pn-le/PhillyTrader/actions/workflows/tests.yml/badge.svg)](https://github.com/pn-le/PhillyTrader/actions/workflows/tests.yml)
+
 An Alpaca **paper-trading** research project: a deterministic, multi-agent intraday
 VWAP mean-reversion system, a trainable parameter-optimizer + ML entry-gate, and a
 rigorous out-of-sample **edge-hunt harness** — built to find a real trading edge *or
@@ -12,18 +14,32 @@ explicitly `--arm` it, and it has no real-money mode at all.
 
 ## 🔬 Honest status & finding
 
-The system is **built, tested (77 passing tests), and verified end-to-end.** A rigorous
-edge hunt then tested **9 strategy variants** under strict chronological train/validation/test
-discipline on **190 trading days** of free IEX data (the research backtester is *bit-identical*
-to the production engine).
+The system is **built, tested (77 passing tests), and verified end-to-end.** Three
+successively stricter edge hunts — **19 experiments in total** — were then run on free
+Alpaca data, each under chronological / walk-forward out-of-sample discipline, with the
+research backtester verified *bit-identical* to the production engine:
 
-**Result: 0 of 9 variants showed a real, robust out-of-sample edge.** Every superficially
-profitable result was long-beta in a single bullish test window, not repeatable alpha (the
-market-neutral twin of the best config loses on all three splits). The ML gate's out-of-sample
-AUC is ~0.5 (coin flip). The prime suspect is the **free IEX feed** (~2–3% of true volume),
-which pins signals to the noise floor. Full writeup → [`experiments/results/SUMMARY.md`](experiments/results/SUMMARY.md).
+1. **Intraday VWAP variants** — 9 variants, 190 trading days of IEX 1-min bars, strict
+   train/validation/test. **0/9 survived.** Every superficially profitable result was
+   long-beta in a single bullish test window; the ML gate's out-of-sample AUC is ~0.5
+   (coin flip). → [`experiments/results/SUMMARY.md`](experiments/results/SUMMARY.md)
+2. **Beta-neutral constructions** — 5 builds (long/short pairs, SPY-hedged, cross-sectional,
+   down-move bounce, long-only control) over 606 trading days and 4 distinct market regimes,
+   with mandatory alpha/beta decomposition. **0/5 show neutral alpha.** The control proves
+   the prior "edge" was market beta; once neutrality is genuinely achieved, alpha is negative
+   or zero in every regime. → [`experiments/results/NEUTRAL_SUMMARY.md`](experiments/results/NEUTRAL_SUMMARY.md)
+3. **Daily cross-sectional factors** — momentum, short-term reversal, overnight, low-vol, and
+   a combo on ~97 large-caps over ~4 years of walk-forward OOS. **0/5 clear all gates**:
+   momentum's Sharpe 0.84 is disguised bull-beta; overnight is the only genuinely neutral
+   build but statistically insignificant (alpha t = 1.57) — and survivorship + missing-crash
+   bias inflate even those. → [`experiments/factors/results/FACTOR_SUMMARY.md`](experiments/factors/results/FACTOR_SUMMARY.md)
 
+**Net result: 0 of 19 experiments showed a real, robust, beta-neutral out-of-sample edge.**
+The recurring blocker is free-data quality — IEX is ~2–3% of true volume, daily history is
+floored at 2020-07, and the universe carries survivorship bias — not parameter tuning.
 This is a *successful* outcome for the harness: it refused to manufacture fake edge.
+Accordingly, any locally generated `best_params.json` / ML model corresponds to an
+edge-less configuration — **do not paper-trade them expecting profit.**
 
 ## Repository layout
 
@@ -32,7 +48,8 @@ This is a *successful* outcome for the harness: it refused to manufacture fake e
 | `alpaca_cli.py` | Minimal read-only CLI (`account`/`positions`/`orders`/`clock`) |
 | `agentic_trader/` | The system: 5 separated agents (MarketData → Strategy → ML gate → Risk(veto) → Execution → Position), continuous loop, backtest, optimizer, ML training |
 | `agentic_trader/*.md` | `STRATEGY_RULES` · `ARCHITECTURE` · `API_MAP` · `INTERFACE_SPEC` · `ENV_REPORT` |
-| `experiments/` | Out-of-sample edge-hunt harness + 9 experiments + results |
+| `experiments/` | Out-of-sample edge-hunt harnesses (intraday + beta-neutral) — 14 experiments + results |
+| `experiments/factors/` | Daily cross-sectional factor harness — 5 factor experiments + results |
 | `tests/` | 77 pytest tests (indicators, strategy, risk, backtest, ML, orchestrator) |
 
 Setup needs a `.env` (copy `.env.example`) with your Alpaca **paper** keys. The `.env` is gitignored — never commit keys.
