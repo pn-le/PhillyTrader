@@ -243,8 +243,9 @@ def main():
     coverage = _build_coverage(per_symbol, total_rows)
     (RESULTS_DIR / "coverage.json").write_text(json.dumps(coverage, indent=2))
     print(
-        f"\nCoverage: earliest={earliest} latest={latest} "
-        f"full_history_names={len(full_names)}/{len(UNIVERSE)} total_rows={total_rows}",
+        f"\nCoverage: earliest={coverage['earliest_bar_date_any_symbol']} "
+        f"latest={coverage['latest_bar_date_any_symbol']} "
+        f"full_history_names={coverage['n_names_full_history']}/{len(UNIVERSE)} total_rows={total_rows}",
         flush=True,
     )
     print("Written to", RESULTS_DIR / "coverage.json", flush=True)
