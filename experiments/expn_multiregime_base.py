@@ -118,8 +118,8 @@ def main() -> dict:
     print("CONTROL: multiregime_base — original LONG-ONLY base strategy, walk-forward, beta-decomposed")
     print("=" * 100)
     print(f"Symbols loaded : {sorted(bars.keys())}")
-    print(f"Spec (FIXED, untuned): entry_dist=0.005 vol_mult=1.2 max_hold=15 "
-          f"vwap_exit_band=0.001 stop_loss=0.005  side=long  (enable_short=False)")
+    print("Spec (FIXED, untuned): entry_dist=0.005 vol_mult=1.2 max_hold=15 "
+          "vwap_exit_band=0.001 stop_loss=0.005  side=long  (enable_short=False)")
     print(f"Walk-forward   : {N_FOLDS} sequential OOS folds, train_frac={TRAIN_FRAC} "
           f"(anchored/expanding train; TRAIN unused — this is a no-tune control)")
     print(f"Costs          : $0 commission + 1bp/side adverse slippage; t->t+1 fills; "
@@ -152,7 +152,7 @@ def main() -> dict:
     print(f"  OOS Sharpe (annualized): {res['oos_sharpe']:+.3f}")
     print(f"  OOS trades total       : {res['oos_n_trades']}")
     print(f"  Folds positive (net)   : {res['folds_positive']} / {res['n_folds']}")
-    print(f"  --- beta decomposition (strat_t = alpha + beta*SPY_t + eps) ---")
+    print("  --- beta decomposition (strat_t = alpha + beta*SPY_t + eps) ---")
     print(f"  beta                   : {bd['beta']:+.4f}   (need |beta| < ~0.15 for neutral)")
     print(f"  beta t-stat            : {bd['beta_tstat']:+.3f}")
     print(f"  alpha (per day)        : {bd['alpha_per_day']:+.6e}")

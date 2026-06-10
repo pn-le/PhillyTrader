@@ -60,7 +60,7 @@ import datetime as _dt
 import json
 from itertools import groupby
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict
 
 import numpy as np
 import pandas as pd

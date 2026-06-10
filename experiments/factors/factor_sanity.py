@@ -18,7 +18,6 @@ Run:  cd /Users/pnle/Desktop/alpaca-cli && python3 -m experiments.factors.factor
 
 from __future__ import annotations
 
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -27,13 +26,12 @@ from experiments.factors.factor_harness import (
     RESULTS_DIR,
     backtest_xsection,
     beta_decompose,
-    cross_sectional_rank,
     evaluate_walkforward,
     form_dollar_neutral_portfolio,
     load_daily,
     spy_daily_returns,
 )
-from experiments.factors.fetch_daily import UNIVERSE, rebuild_coverage_from_cache
+from experiments.factors.fetch_daily import rebuild_coverage_from_cache
 
 
 def _load_panel():

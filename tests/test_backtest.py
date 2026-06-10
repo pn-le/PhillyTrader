@@ -200,7 +200,6 @@ def test_backtest_rows_ordered_by_entry_not_exit_time():
     """Two symbols: one enters EARLY but holds long (exits late), another enters LATER
     but exits quickly. Exit-time order would invert them; the emitted trades MUST be in
     entry/decision-time order so train_model's positional temporal split is honored."""
-    import datetime as _dt
 
     # SPY enters early (~10:21) and holds to max_hold (exits late).
     spy_closes = [100.0] * 20 + [98.5] + [98.5] * 30

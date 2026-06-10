@@ -23,7 +23,6 @@ from typing import Dict, List, Optional
 from zoneinfo import ZoneInfo
 
 from ..config import (
-    DATA_CACHE_DIR,
     DATASET_FORMAT,
     SESSION_CLOSE,
     SESSION_OPEN,

@@ -344,7 +344,7 @@ def main() -> dict:
 
     # (C) cross-sectional neutral candidate at the 5bp base cost (the gate)
     xs_5 = run_xsection_walkforward(panel, spy_c2c, cost_bps=5.0)
-    oos_daily = xs_5.pop("_oos_daily")
+    xs_5.pop("_oos_daily")
 
     # cost sensitivity for the XS candidate at 2 / 10 bp (re-walk, since cost changes
     # which config TRAIN picks; honest — selection is re-done at each cost).
@@ -422,7 +422,7 @@ def main() -> dict:
     print("=" * 78)
     v = report["verdict"]
     print(f"VERDICT survives_oos={v['survives_oos']}  survives_at_costs={v['survives_at_costs']}")
-    print(f"  (gate: alpha_t>=2 AND |beta|<0.15 AND folds+>half AND survives 5bp)")
+    print("  (gate: alpha_t>=2 AND |beta|<0.15 AND folds+>half AND survives 5bp)")
     print(f"  alpha_t@5bp={v['alpha_tstat_5bp']:.2f} beta@5bp={v['beta_5bp']:+.3f} "
           f"oos_sharpe@5bp={v['oos_sharpe_5bp']:.2f} folds+={v['folds_positive_5bp']}/{xs_5['n_folds']}")
     print("Written", RESULTS_DIR / "overnight.json")

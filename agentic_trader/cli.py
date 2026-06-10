@@ -25,7 +25,6 @@ import argparse
 import datetime as _dt
 import sys
 from dataclasses import replace
-from pathlib import Path
 from typing import Any, Dict, List, Optional
 from zoneinfo import ZoneInfo
 
@@ -33,7 +32,6 @@ from . import config
 from .config import (
     RiskLimits,
     Settings,
-    StrategyParams,
     ensure_dirs,
     is_paper_env,
     load_strategy_params,

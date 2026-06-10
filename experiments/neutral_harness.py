@@ -87,7 +87,7 @@ notional book). daily_returns divides each day's net PnL by this base.
 from __future__ import annotations
 
 import datetime as _dt
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Dict, List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -413,7 +413,6 @@ def _bt_spy_hedge(bars: Dict[str, pd.DataFrame], spec: dict) -> dict:
     # We approximate "open at bar t" as entry_time <= t < exit_time (position is on the
     # book and marked from its entry fill bar up to but not including its exit fill bar).
     spy_ind = compute_indicators_df(bars[hedge_sym])
-    spy_close = spy_ind["close"]
     spy_open = spy_ind["open"]
     spy_ts = list(spy_ind.index)
     spy_date = spy_ind["date"]
@@ -460,7 +459,6 @@ def _bt_spy_hedge(bars: Dict[str, pd.DataFrame], spec: dict) -> dict:
     hedge_rebalances = 0
 
     spy_open_arr = spy_open.to_numpy(dtype=float)
-    spy_close_arr = spy_close.to_numpy(dtype=float)
     net_long_arr = net_long.to_numpy(dtype=float)
     dates_arr = list(spy_date.to_numpy())
     n = len(spy_ts)
@@ -468,7 +466,6 @@ def _bt_spy_hedge(bars: Dict[str, pd.DataFrame], spec: dict) -> dict:
     # group bar indices by day to enforce no-overnight hedge.
     from itertools import groupby
 
-    idx = 0
     cur_shares = 0.0  # short SPY shares currently held (>=0 means short that many)
     for day, day_iter in groupby(range(n), key=lambda i: dates_arr[i]):
         day_idxs = list(day_iter)
@@ -515,7 +512,7 @@ def _bt_spy_hedge(bars: Dict[str, pd.DataFrame], spec: dict) -> dict:
     all_days = sorted(set(long_pnl_by_day) | set(hedge_pnl_by_day))
     combined: Dict[_dt.date, float] = {}
     for d in all_days:
-        dn = d if not hasattr(d, "date") else d  # numpy date or date
+        d if not hasattr(d, "date") else d  # numpy date or date
         combined[d] = long_pnl_by_day.get(d, 0.0) + hedge_pnl_by_day.get(d, 0.0)
 
     daily = daily_returns_from_equity(combined, base)
@@ -594,7 +591,7 @@ def _bt_cross_sectional(bars: Dict[str, pd.DataFrame], spec: dict) -> dict:
                 "idx": i,
             }
     # we need next-bar open per (sym, ts): build per-sym index->open and ts->idx map.
-    sym_open_arr = {sym: ind[sym]["open"].to_numpy(dtype=float) for sym in syms}
+    {sym: ind[sym]["open"].to_numpy(dtype=float) for sym in syms}
     sym_ts_list = {sym: list(ind[sym].index) for sym in syms}
     sym_ts_pos = {sym: {t: i for i, t in enumerate(sym_ts_list[sym])} for sym in syms}
 

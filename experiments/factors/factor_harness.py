@@ -71,10 +71,9 @@ a small REAL edge (Sharpe ~0.5-1), not a printer.
 
 from __future__ import annotations
 
-import datetime as _dt
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Dict, List
 
 import numpy as np
 import pandas as pd

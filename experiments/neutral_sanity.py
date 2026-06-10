@@ -16,10 +16,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
 
-from experiments.harness import load_bars, research_backtest, chronological_split
+from experiments.harness import load_bars, research_backtest
 from experiments.neutral_harness import (
     research_backtest_neutral,
     beta_decompose,

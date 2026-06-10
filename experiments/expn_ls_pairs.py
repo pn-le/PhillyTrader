@@ -46,7 +46,6 @@ from experiments.neutral_harness import (
     walk_forward_folds,
     all_trading_dates,
     slice_by_date_range,
-    daily_returns,
     beta_decompose,
     spy_close_to_close_returns,
     TRADING_YEAR,
@@ -161,7 +160,6 @@ def main() -> dict:
     print("=" * 78)
 
     bars = load_bars(UNIVERSE)
-    spy_bars = {SPY_SYMBOL: bars[SPY_SYMBOL]}
     spy_daily_full = spy_close_to_close_returns(bars[SPY_SYMBOL])
 
     dates = all_trading_dates(bars)
@@ -251,7 +249,7 @@ def main() -> dict:
     print(f"  folds positive: {positive}/{len(folds)}")
     print(f"  OOS total_return={float(oos_daily.sum())*100:+.2f}%  mean_daily={oos_mean*1e4:+.2f}bp")
     print(f"  OOS Sharpe (ann)={oos_sharpe:+.2f}")
-    print(f"  --- BETA DECOMPOSITION (vs SPY, on OOS days) ---")
+    print("  --- BETA DECOMPOSITION (vs SPY, on OOS days) ---")
     print(f"  beta={beta_full['beta']:+.4f}  beta_t={beta_full['beta_tstat']:+.2f}  R2={beta_full['r2']:.4f}")
     print(f"  alpha_per_day={beta_full['alpha_per_day']*1e4:+.3f}bp  alpha_annual={beta_full['alpha_annual']*100:+.2f}%")
     print(f"  alpha_tstat={beta_full['alpha_tstat']:+.3f}")

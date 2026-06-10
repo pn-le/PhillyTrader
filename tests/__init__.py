@@ -15,11 +15,10 @@ Conventions
 from __future__ import annotations
 
 import datetime as _dt
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
+from dataclasses import dataclass
+from typing import List, Optional
 from zoneinfo import ZoneInfo
 
-from agentic_trader.config import UNIVERSE
 from agentic_trader.types import (
     Bar,
     Indicators,

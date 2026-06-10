@@ -17,9 +17,8 @@ from __future__ import annotations
 
 import datetime as _dt
 from dataclasses import dataclass
-from typing import Any, List, Optional
+from typing import Any, List
 
-import pytest
 
 from agentic_trader.agents.risk_agent import RiskAgent
 from agentic_trader.config import RiskLimits, Settings, StrategyParams

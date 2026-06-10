@@ -117,7 +117,7 @@ def run_loop(
                     continue  # woke up; re-check the clock
                 break  # stop requested while waiting
 
-            report = _run_one(clients, params, limits, scorer, armed, settings, logger, cooldowns)
+            _run_one(clients, params, limits, scorer, armed, settings, logger, cooldowns)
 
             if stop.stop:
                 break

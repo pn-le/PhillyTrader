@@ -45,7 +45,6 @@ from .types import (
     Proposal,
     RiskDecision,
     Snapshot,
-    Verdict,
 )
 
 

@@ -72,7 +72,7 @@ from __future__ import annotations
 
 import datetime as _dt
 from pathlib import Path
-from typing import Callable, Dict, List, Optional, Tuple
+from typing import Callable, Dict, List, Tuple
 from zoneinfo import ZoneInfo
 
 import numpy as np

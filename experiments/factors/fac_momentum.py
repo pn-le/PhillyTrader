@@ -47,7 +47,6 @@ from __future__ import annotations
 
 import itertools
 import json
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -57,7 +56,6 @@ from experiments.factors.factor_harness import (
     Panel,
     backtest_xsection,
     beta_decompose,
-    evaluate_walkforward,
     form_dollar_neutral_portfolio,
     load_daily,
     spy_daily_returns,

@@ -292,7 +292,6 @@ def _spy_hedge_daily(bars: Dict[str, pd.DataFrame], long_trades: List[dict], spe
     base = float(spec.get("return_base", spec.get("max_exposure", 500.0)))
 
     spy_ind = h.compute_indicators_df(bars[hedge_sym])
-    spy_close = spy_ind["close"]
     spy_open = spy_ind["open"]
     spy_ts = list(spy_ind.index)
     spy_date = spy_ind["date"]
@@ -573,7 +572,7 @@ def main():
     print(f"  OOS total return        : {out['oos_total_return']:+.4f}")
     print(f"  OOS mean daily return   : {out['oos_mean_return']:+.6f}")
     print(f"  OOS Sharpe (annualized) : {out['oos_sharpe']:+.3f}")
-    print(f"  --- BETA DECOMPOSITION (hedged daily returns regressed on SPY) ---")
+    print("  --- BETA DECOMPOSITION (hedged daily returns regressed on SPY) ---")
     print(f"  alpha/day               : {bd['alpha_per_day']:+.6f}")
     print(f"  alpha annualized        : {bd['alpha_annual']:+.4f}  ({bd['alpha_annual']*100:+.2f}%)")
     print(f"  alpha t-stat            : {bd['alpha_tstat']:+.3f}")
@@ -587,8 +586,6 @@ def main():
     a_t = bd["alpha_tstat"]
     beta = bd["beta"]
     folds_pos = out["folds_positive"]
-    # cost/noise floor: require the OOS mean daily return to clear a small bp floor too
-    above_floor = out["oos_mean_return"] > 1e-5  # ~1bp/day on the $500 base is generous; really we lean on t-stat
     survives = (
         alpha_ann > 0
         and a_t >= 2.0

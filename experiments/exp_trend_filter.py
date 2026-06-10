@@ -47,7 +47,6 @@ from experiments.harness import (
     chronological_split,
     evaluate_splits,
     load_bars,
-    research_backtest,
     search_params,
 )
 
